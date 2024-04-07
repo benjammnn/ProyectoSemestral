@@ -9,12 +9,20 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
       body{
-        background-color: grey;
+        background-image: url(img/emojibackgorudn.jpg);
       }
       .carousel-item img {
         max-height: 640px;
         max-width: auto;
         margin: 0 auto;
+      }
+      .carousel {
+        margin: 0 auto;
+        width: fit-content;
+      }
+      .carousel-item.card {
+        margin: 0 auto;
+        width: fit-content;
       }
     </style>
 </head>
@@ -43,7 +51,7 @@
                 <a class="nav-link" href="#">Perfil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Matches</a>
+                <a class="nav-link" href="chat.html">Matches</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -72,19 +80,18 @@
       <div id="carouselExampleFade" class="carousel slide carousel-fade">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <div class="card" style="width: 100%">
-              <img src="img/pana1.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
+            <div class="card" style="width:100%" >
+              <img src="img/pana1.jpg" class="card-img-top" alt="Foto principal">
+              <div class="card-header">
                 <h5 class="card-title">#Nombre perfil#</h5>
-                <p class="card-text">#contenido del perfil#</p>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="img/pana2.jpg" class="d-block w-100" alt="...">
+            <img src="img/pana2.jpg" class="card-img-top" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="img/pana3.jpg" class="d-block w-100" alt="...">
+            <img src="img/pana1.jpg" class="card-img-top" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
