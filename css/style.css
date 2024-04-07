@@ -2,11 +2,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100px;
     background-color: #ecf0f1;
 }
 
 p{
     margin: 5px;
 }
-.label {width: 100px;}
+
+.month-label {
+    /* Modifica el ancho y el alto del label según tus preferencias */
+    width: 100px; /* Ancho del label */
+    height: 30px; /* Alto del label */
+    /* Otros estilos opcionales */
+    display: inline-block; /* Para que ocupe solo el espacio necesario */
+    margin-right: 10px; /* Espacio entre el label y el input */
+}
+
+
+
+
+
+
