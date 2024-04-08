@@ -8,22 +8,11 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <style>
-      body{
-        background-image: url(img/emojibackgorudn.jpg);
-      }
-      .carousel-item img {
-        max-height: 640px;
-        max-width: auto;
-        margin: 0 auto;
-      }
-      .carousel {
-        margin: 0 auto;
-        width: fit-content;
-      }
-      .carousel-item.card {
-        margin: 0 auto;
-        width: fit-content;
-      }
+      body{ background-image: url(img/emojibackgorudn.jpg); }
+      .carousel-item img { max-height: 640px; max-width: auto; margin: 0 auto; }
+      .carousel { margin: 0 auto; width: fit-content; }
+      .carousel-item.card { margin: 0 auto; width: fit-content; }
+      .card-body { text-align: center; }
     </style>
 </head>
 <body>
@@ -81,14 +70,23 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="card" style="width:100%" >
-              <img src="img/pana1.jpg" class="card-img-top" alt="Foto principal">
-              <div class="card-header">
-                <h5 class="card-title">#Nombre perfil#</h5>
+              <img src="img/pana4.jpg" class="card-img-top" alt="Foto principal">
+              <div class="card-body" style="background-color: whitesmoke;">
+                <h5 class="card-title" style="background-color: whitesmoke;">Benjamín Arévalo Onetto, 20.</h5>
+                <p style="background-color: whitesmoke;">Genero: Hombre.<br>Carrera: Ingenieria en informatica.<br>Intereses: Follar al cristobal.
+                </p>
+              </div>
+              <div class="card-footer">
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                  <button type="button" class="btn btn-danger" style="padding: 35%; height: 20%;">No!</button>
+                  <button type="button" class="btn" style="font-weight: bold; background-color: grey;">¿Match?</button>
+                  <button type="button" class="btn btn-success" style="padding: 35%; height: 20%;">Si!</button>
+                </div>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="img/pana2.jpg" class="card-img-top" alt="...">
+            <img src="img/pana5.png" class="card-img-top" alt="...">
           </div>
           <div class="carousel-item">
             <img src="img/pana1.jpg" class="card-img-top" alt="...">
