@@ -13,13 +13,14 @@
       .carousel { margin: 0 auto; width: fit-content; }
       .carousel-item.card { margin: 0 auto; width: fit-content; }
       .card-body { text-align: center; }
+      .col { display: flex; align-items: center; justify-content: center; margin: 100px;}
     </style>
 </head>
 <body>
   <header>
     <nav class="navbar fixed-top" style="background-color: steelblue;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="Index.html">
           <img src="img/logoduoc2.png" alt="" width="80" height="">
           Matcher
         </a>
@@ -34,7 +35,7 @@
           <div class="offcanvas-body" style="background-color: thistle">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                <a class="nav-link active" aria-current="page" href="Index.html">Inicio</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Perfil</a>
@@ -73,14 +74,22 @@
               <img src="img/pana4.jpg" class="card-img-top" alt="Foto principal">
               <div class="card-body" style="background-color: whitesmoke;">
                 <h5 class="card-title" style="background-color: whitesmoke;">Benjamín Arévalo Onetto, 20.</h5>
-                <p style="background-color: whitesmoke;">Genero: Hombre.<br>Carrera: Ingenieria en informatica.<br>Intereses: Follar al cristobal.
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                  <button type="button" class="btn btn-danger" style="padding: 35%; height: 20%;">No!</button>
-                  <button type="button" class="btn" style="font-weight: bold; background-color: grey;">¿Match?</button>
-                  <button type="button" class="btn btn-success" style="padding: 35%; height: 20%;">Si!</button>
+                <p style="background-color: whitesmoke;">Genero: Hombre.<br>Carrera: Ingenieria en informatica.<br>Intereses:</p>
+                <div class="container text-center" style="background-color: whitesmoke;">
+                  <div class="row gx-5">
+                    <div class="col">
+                      <a href="#">
+                        <img src="img/No.png" width="90px" height="90px">
+                      </a>
+                     <div class="p-3"></div>
+                    </div>
+                    <div class="col">
+                      <a href="chat.html">
+                        <img src="img/Sí.png" width="90px" height="90px">
+                      </a>
+                      <div class="p-3"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
