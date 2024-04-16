@@ -48,7 +48,10 @@
             </div>
           </nav>
     </header>
+
+
     <main>
+        <form  method="post">
         <br>
         <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;">
             <div class="mx-auto" style="width:auto;" >
@@ -59,33 +62,41 @@
                        
                    
                     
-                    <form class="form">
+                    
                         
-                        <p>
-                        <label class="label-input" for="">
-                            <i class="far fa-envelope icon-modify"></i>
-                            <input type="email" placeholder="Email">
-                            
-                        </label>
-                        </p>
-                        <p>
-                        <label class="label-input" for="">
-                            <i class="fas fa-lock icon-modify"></i>
-                            <input type="password" placeholder="Contraseña">
-                        </label>
-                        </p>
-                        <a href="matcher.html">
-                            <button type="button" class="btn btn-primary" style="width: 189px; height: 40px;" >Iniciar Sesión</button>
-                        </a>
-                        <br><br>
-                        <a class="password" href="#">¿Olvidaste tu contraseña?</a>
-                    </form>
+                  <p>
+                  <label class="label-input" for="">
+                      <i class="far fa-envelope icon-modify"></i>
+                      <input type="email" placeholder="Email" name="user">
+                      
+                  </label>
+                  </p>
+                  <p>
+                  <label class="label-input" for="">
+                      <i class="fas fa-lock icon-modify"></i>
+                      <input type="password" placeholder="Contraseña" name="pass">
+                  </label>
+                  </p>
+                  <a href="matcher.html">
+                      <button class="btn btn-primary" style="width: 189px; height: 40px;" onclick="verInfo">Iniciar Sesión</button>
+                  </a>
+                  <br><br>
+                  <a class="password" href="#">¿Olvidaste tu contraseña?</a>
+                    
                 
-            </div><!-- second-content -->
+                </div>
         </div>
+  
+        </form>
     </main>
     <footer></footer>
 
-
+    <script>
+      function verInfo(){
+        var user =document.getElementById
+        var pass = document.getElementById
+        console.log(user + ' ' + pass)
+      }
+    </script>
 </body>
 </html>

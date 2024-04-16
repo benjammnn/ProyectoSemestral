@@ -51,34 +51,63 @@
           </nav>
     </header>
     <main>
+      <form class="form form-active" method="post">
         <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;">
             <div class="mx-auto" style="width:auto;">
                 <br>
                 <h2 class="title title-second" style="display: flex; align-items: center; justify-content: center;">Registro</h2>
                 <br>               
                 <div class="container-fluid" >
+                  
                     <div style="text-align: center; ">
                         <label class="label-input" for="">
-                            <input type="text" placeholder="Nombre">
+                            <input type="text" placeholder="Nombres" name="names" id="nombres">
                         </label>
                     
                         <label class="label-input" for="">
-                            <input type="text" placeholder="Apellido">
+                            <input type="text" placeholder="Apellidos" name="lastnames" id="apellidos">
                         </label>
+                    </div>
+                    <div>
+                      <p>
+                        <label class="label-input" for="">
+                          <input type="text" placeholder="Escriba su rut con el siguiente formato XX.XXX.XXX-X" style="width: 381px;" name="id" id="rut">
+                        </label>
+                      </p>
+                    </div>
+                    <div>
+                      <p>
+                        <label class="label-input" for="">
+                          <input type="text" placeholder="carrera" name="profession" id="carrera">
+                        </label>
+                        <label for="month"></label>
+                                <select id="month" name="month" required  style="width: 184px;">
+                                    <option value="" disabled selected>Nivel de estudio</option>
+                                    <option value="Semestre 1">Semestre 1</option>
+                                    <option value="Semestre 2">Semestre 2</option>
+                                    <option value="Semestre 3">Semestre 3</option>
+                                    <option value="Semestre 4">Semestre 4</option>
+                                    <option value="Semestre 5">Semestre 5</option>
+                                    <option value="Semestre 6">Semestre 6</option>
+                                    <option value="Semestre 7">Semestre 7</option>
+                                    <option value="Semestre 8">Semestre 8</option>
+                                    
+                                </select>
+                      </p>
                     </div>
                     <div style="text-align: center;">
                         <p>
                         <label class="label-input" for="mail">
                             <input type="email" placeholder="Email" id="mail" style="width: 381px;">
                         </label>
-                    </p>
+                        </p>
                     </div>
                     <div style="text-align: center;">
                         <label class="label-input" for="">
                             <input type="password" placeholder="Contraseña" style="width: 381px;">
                         </label>
                     </div>
-                </div>
+                      </div>
     
                         <div class="container-fluid"> 
                             <div style="text-align: center; "> 
@@ -124,16 +153,17 @@
                         
                         
                         <div class="container container-fluid">
-                        <button type="button" class="btn btn-primary" style="width: 189px; height: 40px; display: flex; justify-content: center;" >Registrarse</button>
+                        <button class="btn btn-primary" style="width: 189px; height: 40px; display: flex; justify-content: center;" >Registrarse</button>
                         </div>
                        
+                      </div> 
                     </div> 
-                </div> 
-
+                  
                 
             </div>   
             
         </div>
+      </form>
     </main>
     <footer>
 
