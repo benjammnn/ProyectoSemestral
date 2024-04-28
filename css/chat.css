@@ -6,4 +6,14 @@
 #messageArea {
     padding: 1rem;
 }
+#search-input:focus + span #search-icon {
+    color: black;
+  }
+  #contacts-column {
+    border-right: 1px solid #dee2e6;
+}
+
+#chat-column {
+    border-left: 1px solid #dee2e6;
+}
 
