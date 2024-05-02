@@ -54,7 +54,7 @@
                       <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación</h1>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body d-flex justify-content-center">
                       ¿Estás seguro de cerrar tú sesión?
                     </div>
                     <div class="modal-footer">
@@ -101,7 +101,7 @@
                       <!-- Repite para más chats -->
                   </div>
               </div>
-              <div class="col-md-8" id="chat-column">
+              <div class="col-md-8" id="chat-column" >
                 <div class="d-flex flex-column" style="height: 80vh;">
                     <!-- Cabecera del chat -->
                     <div class="chat-header p-2 d-flex align-items-center border-bottom" style="background-color: white;">
@@ -113,9 +113,11 @@
                     </div>
                     <!-- Área de entrada de mensaje -->
                     <div class="input-group p-3">
-                        <input id="chatInput" type="text" class="form-control" placeholder="Escribe un mensaje..." style="border-right: 0; box-shadow: 0 0 10px rgba(0, 0, 0, 0.171); padding-right: 30px;">
-                        <button id="chatBtnEnviar" class="btn btn-primary" type="button" style="border-right: 0; box-shadow: 0 0 10px rgba(0,0,0,0.5);">Enviar</button>
-                    </div>
+                      <textarea id="chatInput" class="form-control rounded-pill" placeholder="Escribe un mensaje..." style="border-right: 0; box-shadow: 0 0 10px rgba(0, 0, 0, 0.171); padding-right: 30px; overflow: hidden; resize: none; height: 20px;"></textarea>
+                      <button id="chatBtnEnviar" class="btn btn-primary rounded-start-2" type="button" style="border-right: 0; box-shadow: 0 0 10px rgba(0,0,0,0.5);">Enviar</button>
+                      <input type="file" id="fileInput" class="form-control" style="display: none;" />
+                      <button id="fileUploadBtn" class="btn btn-secondary bg-warning" type="button" onclick="document.getElementById('fileInput').click()" style=" box-shadow: 0 0 10px rgba(0,0,0,0.5); color: white; font-size: x-large; margin-left: 6px;"><i class="bi bi-paperclip"></i></button>
+                  </div>
                 </div>
           </div>
         </div>

@@ -31,7 +31,7 @@
     clear: both;
     font-size: 25px; 
 }
-#fileUpdownBtn {
-    background-color: none;
+.archivo-adjunto{
+    color: aquamarine;
 }
 
