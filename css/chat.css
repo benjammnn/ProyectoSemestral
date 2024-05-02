@@ -15,17 +15,23 @@
 
 #chat-column {
     border-left: 1px solid #dee2e6;
+    background: rgb(70,88,106);
+    background: radial-gradient(circle, rgba(70,88,106,1) 0%, rgba(115,133,167,1) 100%);
 }
 .mensaje-enviado {
     display: inline-block; 
     float: left;
-    border: 1px solid #000;
+    border: 1px solid white;
     border-radius: 25px;
     padding: 10px;
     margin: 10px 20px 10px 0;
     background-color: #f0f0f0;
     word-break: break-word;
     max-width: 80%;
-    clear: both; 
+    clear: both;
+    font-size: 25px; 
+}
+#fileUpdownBtn {
+    background-color: none;
 }
 
