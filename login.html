@@ -6,7 +6,6 @@
     <title>Inicio de sesión</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.bundle.min.js"></script>
-  
     
 </head>
 <body>
@@ -65,20 +64,17 @@
                     
                         
                   <p>
-                  <label class="label-input" for="">
-                      <i class="far fa-envelope icon-modify"></i>
-                      <input type="email" placeholder="Email" name="user">
-                      
+                  <label class="label-input">
+                  <input type="email" placeholder="Email" name="user" id="user">  
                   </label>
                   </p>
                   <p>
-                  <label class="label-input" for="">
-                      <i class="fas fa-lock icon-modify"></i>
-                      <input type="password" placeholder="Contraseña" name="pass">
+                  <label class="label-input">
+                  <input type="password" placeholder="Contraseña" name="pass" id="pass">
                   </label>
                   </p>
                   <a href="matcher.html">
-                      <button class="btn btn-primary" style="width: 189px; height: 40px;" onclick="verInfo">Iniciar Sesión</button>
+                      <button class="btn btn-primary" style="width: 189px; height: 40px;" id="btnValidar">Iniciar Sesión</button>
                   </a>
                   <br><br>
                   <a class="password" href="#">¿Olvidaste tu contraseña?</a>
@@ -90,13 +86,43 @@
         </form>
     </main>
     <footer></footer>
-
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../js/funciones.js"></script>
     <script>
-      function verInfo(){
-        var user =document.getElementById
-        var pass = document.getElementById
-        console.log(user + ' ' + pass)
-      }
-    </script>
+      $(document).ready(function () {
+          let user = $("#user");
+          let pass = $("#pass");
+
+          $("#btnValidar").click(function () {
+              validarFormulario(user, pass);
+          });
+
+          user.keyup(function () {
+              if (user.val().length <= 8) {
+                  user.css("border", "1px solid red");
+              } else {
+                  user.css("border", "1px solid green");
+              }
+          });
+      });
+
+      function validarFormulario(user, pass) {
+          if (user.val() === "") {
+              user.css("border", "1px solid red");
+              return;
+          } else {
+              user.css("border", "1px solid green");
+          }
+
+          if (pass.val() === "") {
+              pass.css("border", "1px solid red");
+              return;
+          } else {
+              pass.css("border", "1px solid green");
+          }
+        }
+          </script>
 </body>
 </html>
