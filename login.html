@@ -50,7 +50,7 @@
 
 
     <main>
-        <form  method="post">
+        <form  >
         <br>
         <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;">
             <div class="mx-auto" style="width:auto;" >
@@ -95,12 +95,16 @@
           let user = $("#user");
           let pass = $("#pass");
 
-          $("#btnValidar").click(function () {
-              validarFormulario(user, pass);
-          });
+          $("#btnValidar").click(function (event) {
+                if (validarFormulario(user, pass)){
+
+                }
+                else
+                event.preventDefault();
+            });
 
           user.keyup(function () {
-              if (user.val().length <= 8) {
+              if (user.val().length <= 8|| !user.val().includes("@")) {
                   user.css("border", "1px solid red");
               } else {
                   user.css("border", "1px solid green");
