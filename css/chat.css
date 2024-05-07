@@ -34,4 +34,23 @@
 .archivo-adjunto{
     color: aquamarine;
 }
+.contenedor-mensaje {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
 
+.eliminar-btn {
+    display: none;
+    position: relative;
+    color: red;
+    background-color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    
+}
+
+.contenedor-mensaje:hover .eliminar-btn {
+    display: block;
+}
