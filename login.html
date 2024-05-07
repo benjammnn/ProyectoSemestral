@@ -1,102 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de sesión</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/bootstrap.bundle.min.js"></script>
-  
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de sesión</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/bootstrap.bundle.min.js"></script>
+
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-light" style="background-color:steelblue;">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="Index.html">
-                <img src="img/logoduoc2.png" alt="" width="80" height="">
-                Matcher
+  <header>
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color:steelblue;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="Index.html">
+          <img src="img/logoduoc2.png" alt="" width="80" height="">
+          Matcher
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="Index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Caracteristicas</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Sobre Nosotros
               </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" href="Index.html">Inicio</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Caracteristicas</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                      Sobre Nosotros
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Unete a nuestro equipo<a></li>
-                      <li><a class="dropdown-item" href="#">Preguntas frecuentes</a></li>
-                      <li><a class="dropdown-item" href="#">Contáctanos</a></li>
-                    </ul>
-                  </li>
-                </ul>
-                <a href="register.html" class="ms-auto pe-3">
-                  <button type="button" class="btn btn-primary">Registrarse</button>
-                </a>
-              </div>
-            </div>
-          </nav>
-    </header>
-
-
-    <main>
-        <form  method="post">
-        <br>
-        <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;">
-            <div class="mx-auto" style="width:auto;" >
-        
-                    <h2 class="title title-second" style="display: flex; align-items: center; justify-content: center;">Inicio de sesión</h2>
-                    <br>
-                <div class="social-media" style="display: flow-root;">
-                       
-                   
-                    
-                    
-                        
-                  <p>
-                  <label class="label-input" for="">
-                      <i class="far fa-envelope icon-modify"></i>
-                      <input type="email" placeholder="Email" name="user">
-                      
-                  </label>
-                  </p>
-                  <p>
-                  <label class="label-input" for="">
-                      <i class="fas fa-lock icon-modify"></i>
-                      <input type="password" placeholder="Contraseña" name="pass">
-                  </label>
-                  </p>
-                  <a href="matcher.html">
-                      <button class="btn btn-primary" style="width: 189px; height: 40px;" onclick="verInfo">Iniciar Sesión</button>
-                  </a>
-                  <br><br>
-                  <a class="password" href="#">¿Olvidaste tu contraseña?</a>
-                    
-                
-                </div>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Unete a nuestro equipo<a></li>
+                <li><a class="dropdown-item" href="#">Preguntas frecuentes</a></li>
+                <li><a class="dropdown-item" href="#">Contáctanos</a></li>
+              </ul>
+            </li>
+          </ul>
+          <a href="register.html" class="ms-auto pe-3">
+            <button type="button" class="btn btn-primary">Registrarse</button>
+          </a>
         </div>
-  
-        </form>
-    </main>
-    <footer></footer>
+      </div>
+    </nav>
+  </header>
 
-    <script>
-      function verInfo(){
-        var user =document.getElementById
-        var pass = document.getElementById
-        console.log(user + ' ' + pass)
+
+  <main>
+    <form>
+      <br>
+      <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;">
+        <div class="mx-auto" style="width:auto;">
+
+          <h2 class="title title-second" style="display: flex; align-items: center; justify-content: center;">Inicio de
+            sesión</h2>
+          <br>
+          <div class="social-media" style="display: flow-root;">
+
+
+
+
+
+            <p>
+              <label class="label-input">
+                <input type="email" placeholder="Email" name="user" id="user">
+              </label>
+            </p>
+            <p>
+              <label class="label-input">
+                <input type="password" placeholder="Contraseña" name="pass" id="pass">
+              </label>
+            </p>
+            <a href="matcher.html">
+              <button type="button" class="btn btn-primary" style="width: 189px; height: 40px;" id="btnValidar">Iniciar
+                Sesión</button>
+            </a>
+            <br><br>
+            <a class="password" href="#">¿Olvidaste tu contraseña?</a>
+
+
+          </div>
+        </div>
+
+    </form>
+  </main>
+  <footer></footer>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      let user = $("#user");
+      let pass = $("#pass");
+
+      $("#btnValidar").click(function (event) {
+        if (validarFormulario(user, pass)) {
+          window.location.replace("matcher.html");
+        }
+        else
+          event.preventDefault();
+      });
+
+      user.keyup(function () {
+        if (user.val().length <= 8 || !user.val().includes("@")) {
+          user.css("border", "1px solid red");
+        } else {
+          user.css("border", "1px solid green");
+        }
+      });
+    });
+
+    function validarFormulario(user, pass) {
+      if (user.val() === "") {
+        user.css("border", "1px solid red");
+        return false;
+      } else {
+        user.css("border", "1px solid green");
       }
-    </script>
+
+      if (pass.val() === "") {
+        pass.css("border", "1px solid red");
+        return false;
+      } else {
+        pass.css("border", "1px solid green");
+      }
+      return true;
+    }
+  </script>
 </body>
+
 </html>
