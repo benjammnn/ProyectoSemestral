@@ -19,38 +19,15 @@
     background: radial-gradient(circle, rgba(70,88,106,1) 0%, rgba(115,133,167,1) 100%);
 }
 .mensaje-enviado {
-    display: inline-block; 
-    float: left;
-    border: 1px solid white;
+    display: inline-block; /* Cambiar de block a inline-block */
+    float: left; /* Añadir float left */
+    border: 1px solid #000;
     border-radius: 25px;
     padding: 10px;
     margin: 10px 20px 10px 0;
     background-color: #f0f0f0;
     word-break: break-word;
     max-width: 80%;
-    clear: both;
-    font-size: 25px; 
-}
-.archivo-adjunto{
-    color: aquamarine;
-}
-.contenedor-mensaje {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-}
-
-.eliminar-btn {
-    display: none;
-    position: relative;
-    color: red;
-    background-color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    
-}
-
-.contenedor-mensaje:hover .eliminar-btn {
-    display: block;
+    clear: both; /* Añadir clear both */
+    font-size: xx-large;
 }
