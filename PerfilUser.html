@@ -1,80 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <style>
+      .container-fluid {text-align: center;}
+      .card {display: inline-block; margin-top: 100px;}
+    </style>
+  </head>
+  <body>
     <header>
-        <nav class="navbar fixed-top" style="background-color: steelblue;">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="Index.html">
-              <img src="img/logoduoc2.png" alt="" width="80" height="">
-              Matcher
-            </a>
-            <button class="navbar-toggler ms-auto pd-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="background-color: thistle;">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-              <div class="offcanvas-header" style="background-color:cadetblue;">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="font-size: 20px; font-weight:bold;">Menu</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <nav class="navbar fixed-top" style="background-color: steelblue;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="Index.html">
+            <img src="img/logoduoc2.png" alt="" width="80" height="">
+            Matcher
+          </a>
+          <button class="navbar-toggler ms-auto pd-3" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation"
+            style="background-color: thistle;">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header" style="background-color:cadetblue;">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="font-size: 20px; font-weight:bold;">Menu</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body" style="background-color: thistle">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="Index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Perfil</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="chat.html">Matches</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Opciones
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Historial</a></li>
+                    <li><a class="dropdown-item" href="#">Subscripciones</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Configuraciones</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <form class="d-flex mt-3" role="search">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit"
+                  style="color: black; background-color:steelblue;">Buscar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="card text-center">
+              <div class="card-header" style="background-color:cornflowerblue; font-weight: bold;">
+                Perfil del usuario
               </div>
-              <div class="offcanvas-body" style="background-color: thistle">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="Index.html">Inicio</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Perfil</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="chat.html">Matches</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Opciones
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Historial</a></li>
-                      <li><a class="dropdown-item" href="#">Subscripciones</a></li>
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                      <li><a class="dropdown-item" href="#">Configuraciones</a></li>
-                    </ul>
-                  </li>
-                </ul>
-                <form class="d-flex mt-3" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit" style="color: black; background-color:steelblue;">Buscar</button>
-                </form>
+              <div class="mx-auto mb-3 pt-3">
+                <img src="img/pana4.jpg" class="w-25 rounded-circle" alt="">
+              </div>
+              <div class="card-body">
+                <div class="form-floating w-50 mx-auto mb-3">
+                  <input type="text" class="form-control" name="name" id="name" placeholder="Nombre del estudiante">
+                  <label for="name">Nombre:</label>
+                </div>
+                <div class="form-floating w-50 mx-auto mb-3">
+                  <input type="text" class="form-control" name="rut" id="id" placeholder="Rut del estudiante">
+                  <label for="rut">Rut:</label>
+                </div>
+                <div class="form-floating w-50 mx-auto mb-3">
+                  <input type="text" class="form-control" name="carrera" id="carrera" placeholder="Carrera del estudiante">
+                  <label for="carrera">Carrera:</label>
+                </div>
+                <div class="form-floating w-50 mx-auto mb-3">
+                  <select class="form-select" name="optNvlEst" id="optNvlEst">
+                      <option value=""selected>Nivel de estudio</option>
+                      <option value="Semestre 1">Semestre 1</option>
+                      <option value="Semestre 2">Semestre 2</option>
+                      <option value="Semestre 3">Semestre 3</option>
+                      <option value="Semestre 4">Semestre 4</option>
+                      <option value="Semestre 5">Semestre 5</option>
+                      <option value="Semestre 6">Semestre 6</option>
+                      <option value="Semestre 7">Semestre 7</option>
+                      <option value="Semestre 8">Semestre 8</option>
+                  </select>
+                  <label for="optNvlEst">Rol:</label>
+                </div>
+                <div class="form-floating w-50 mx-auto mb-3">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email del estudiante">
+                  <label for="email">Email:</label>
+                </div>
+                <div class="form-floating w-50 mx-auto mb-3">
+                  <input type="password" class="form-control" name=" pass" id="pass" placeholder="Contraseña del estudiante">
+                  <label for="pass">Contraseña:</label>
+                </div>
+                <div class="form-floating w-50 mx-auto mb-3">
+                  <input type="date" class="form-control" id="txtFecnac" name="txtFecnac" placeholder="Fecha de Nacimiento" required>
+                  <label for="txtFecnac">Fecha de Nacimiento</label>
+                </div>
+                <div class="row">
+                  <div class="col-12 mb-2">
+                      <label for="">Seleccione su genero</label>
+                  </div>
+                  <div class="col mb-3">
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" value="Masculino" name="optGenero"
+                              id="optGenero1">
+                          <label class="form-check-label" for="optGenero1">
+                              Masculino
+                          </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" value="Femenino" name="optGenero"
+                              id="optGenero2">
+                          <label class="form-check-label" for="optGenero2">
+                              Femenino
+                          </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" value="Otro" name="optGenero" id="optGenero3">
+                          <label class="form-check-label" for="optGenero3">
+                              Otro
+                          </label>
+                      </div>
+                </div>
+              </div>
+              <div class="card-footer text-body-secondary">
+                aqui van los botones guardar y cancelar
               </div>
             </div>
           </div>
-        </nav>
-      </header>
-      <main>
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
-            </ul>
-            <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-      </main>
-</body>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
