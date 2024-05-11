@@ -82,7 +82,7 @@
           <div class="p-3">
             <form>
               <div class="input-group">
-                <input id="search-input" type="text" class="form-control rounded-pill position-relative"
+                <input type="text" id="filtroContactos" class="form-control rounded-pill position-relative"
                   placeholder="Buscar contacto..."
                   style="border-right: 0; box-shadow: 0 0 10px rgba(0, 0, 0, 0.171); padding-right: 30px;">
                 <span class="input-group-text position-absolute"
@@ -94,35 +94,10 @@
           </div>
           <div class="list-group">
             <!-- Acá irán los contactos -->
-            <div class="contacto" data-contacto-id="1">
-              <a href="#" class="list-group-item list-group-item-action" data-contacto-id="1">
-                <div class="d-flex w-100 justify-content-between">
-                  <img
-                    src="https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg"
-                    alt="Foto de perfil" class="rounded-circle me-2"
-                    style="width: 50px; height: 50px; object-fit: cover;">
-                  <div class="flex-grow-1">
-                    <h6 class="mb-0">Nombre del contacto 1</h6>
-                    <small>Último mensaje...</small>
-                  </div>
-                </div>
-              </a>
+            <div class="contacto" data-contacto-id="">
+              
             </div>
             <!-- Repite para más chats -->
-            <div class="contacto" data-contacto-id="2">
-              <a href="#" class="list-group-item list-group-item-action" data-contacto-id="2">
-                <div class="d-flex w-100 justify-content-between">
-                  <img
-                    src="https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg"
-                    alt="Foto de perfil" class="rounded-circle me-2"
-                    style="width: 50px; height: 50px; object-fit: cover;">
-                  <div class="flex-grow-1">
-                    <h6 class="mb-0">Nombre del contacto 2</h6>
-                    <small>Último mensaje...</small>
-                  </div>
-                </div>
-              </a>
-            </div>
           </div>
         </div>
         <div class="col-md-8 chat" id="chat-column">
@@ -157,7 +132,5 @@
     <script src="/jquery/jquery-3.7.1.min.js"></script>
     <script src="/js/chat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
-
 </body>
-
 </html>
