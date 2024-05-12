@@ -28,7 +28,7 @@
               <a class="nav-link" href="Index.html">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Caracteristicas</a>
+              <a class="nav-link" href="PestañaInfo.html#caract">Caracteristicas</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -36,13 +36,14 @@
                 Sobre Nosotros
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Unete a nuestro equipo<a></li>
+                <li><a class="dropdown-item" href="#">Acerca de nuestro equipo<a></li>
                 <li><a class="dropdown-item" href="#">Preguntas frecuentes</a></li>
                 <li><a class="dropdown-item" href="#">Contáctanos</a></li>
               </ul>
             </li>
           </ul>
-          <a href="register.html" class="ms-auto pe-3">
+          
+          <a href="register.html">
             <button type="button" class="btn btn-primary">Registrarse</button>
           </a>
         </div>
@@ -51,21 +52,15 @@
   </header>
 
 
-  <main>
-    <form>
-      <br>
-      <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;">
-        <div class="mx-auto" style="width:auto;">
+    <main>
+      <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;"></div>
+        <div class="row" style="width:auto;">
+          <form action="" method="POST" class="form form-active col-md-4 mx-auto shadow-lg text-center mt-5 p-2">
 
-          <h2 class="title title-second" style="display: flex; align-items: center; justify-content: center;">Inicio de
+
+            <h2 class="title title-second" style="display: flex; align-items: center; justify-content: center;">Inicio de
             sesión</h2>
-          <br>
-          <div class="social-media" style="display: flow-root;">
-
-
-
-
-
+            <br>
             <p>
               <label class="label-input">
                 <input type="email" placeholder="Email" name="user" id="user">
@@ -81,14 +76,12 @@
                 Sesión</button>
             </a>
             <br><br>
-            <a class="password" href="#">¿Olvidaste tu contraseña?</a>
-
-
-          </div>
+            <a class="password" href="recuperaContraseña.html">¿Olvidaste tu contraseña?</a>
+       
+          </form>
         </div>
-
-    </form>
-  </main>
+      </div>
+    </main>
   <footer></footer>
   <script src="../js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -98,8 +91,8 @@
       let pass = $("#pass");
 
       $("#btnValidar").click(function (event) {
-        if (validarFormulario(user, pass)) {
-          window.location.replace("matcher.html");
+        if (validarFormulario(user)) {
+          
         }
         else
           event.preventDefault();
@@ -114,21 +107,13 @@
       });
     });
 
-    function validarFormulario(user, pass) {
+    function validarFormulario(user) {
       if (user.val() === "") {
         user.css("border", "1px solid red");
         return false;
       } else {
         user.css("border", "1px solid green");
       }
-
-      if (pass.val() === "") {
-        pass.css("border", "1px solid red");
-        return false;
-      } else {
-        pass.css("border", "1px solid green");
-      }
-      return true;
     }
   </script>
 </body>
