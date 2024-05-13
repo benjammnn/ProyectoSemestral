@@ -51,6 +51,7 @@
 
 
     <main>
+      
       <div class="container-fluid" style="display: flex; ; justify-content: end;">
         <div class="row" style="width:auto;">
           <a href="register.html">Registrarme</a>
@@ -64,6 +65,7 @@
             <h2 class="title title-second" style="display: flex; align-items: center; justify-content: center;">Inicio de
             sesión</h2>
             <br>
+            
             <p>
               <label class="label-input">
                 <input type="email" placeholder="Email" name="user" id="user">
@@ -82,7 +84,12 @@
             <a href="recuperaContraseña.html">¿Olvidaste tu contraseña?</a>
        
           </form>
+          <div class="container-fluid" style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+            <div class="row" style="width:auto;">
+            <div id="mensajesError" class="text-danger"></div>
         </div>
+        </div>
+      </div>
       </div>
     </main>
   <footer>
@@ -91,43 +98,63 @@
   <script src="../js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script>
-    $(document).ready(function () {
-      let user = $("#user");
-      let pass = $("#pass");
+   $(document).ready(function () {
+  let user = $("#user");
+  let pass = $("#pass");
+  let mensajesError = $("#mensajesError");
 
-      $("#btnValidar").click(function (event) {
-        if (validarFormulario(user, pass)) {
-          window.location.replace("matcher.html");
-        }
-        else
-          event.preventDefault();
-      });
+  $("#btnValidar").click(function (event) {
+    event.preventDefault();
+    validarFormulario(user, pass, mensajesError);
+  });
 
-      user.keyup(function () {
-        if (user.val().length <= 8 || !user.val().includes("@")) {
-          user.css("border", "1px solid red");
-        } else {
-          user.css("border", "1px solid green");
-        }
-      });
-    });
+  user.keyup(function () {
+    validarEmail(user, mensajesError);
+  });
 
-    function validarFormulario(user, pass) {
-      if (user.val() === "") {
-        user.css("border", "1px solid red");
-        return false;
-      } else {
-        user.css("border", "1px solid green");
-      }
+  pass.keyup(function () {
+    validarContraseña(pass, mensajesError);
+  });
+});
 
-      if (pass.val() === "") {
-        pass.css("border", "1px solid red");
-        return false;
-      } else {
-        pass.css("border", "1px solid green");
-      }
-      return true;
-    }
+function validarFormulario(user, pass, mensajesError) {
+  mensajesError.empty(); 
+  let validEmail = validarEmail(user, mensajesError);
+  let validPass = validarContraseña(pass, mensajesError);
+
+  if (!validEmail) {
+    mensajesError.append("<p>El correo electrónico no es válido.</p>");
+  }
+  if (!validPass) {
+    mensajesError.append("<p>La contraseña debe tener al menos 8 caracteres.</p>");
+  }
+
+  if (validEmail && validPass) {
+   
+    window.location.replace("matcher.html");
+  }
+}
+
+function validarEmail(user, mensajesError) {
+  let email = user.val().trim();
+  let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function validarContraseña(pass, mensajesError) {
+  let contraseña = pass.val().trim();
+  if (contraseña.length < 8) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+
   </script>
 </body>
 
