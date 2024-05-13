@@ -1,3 +1,16 @@
+function loadChatHistory() {
+  const history = JSON.parse(localStorage.getItem('chatHistory')) || {};
+  return history;
+}
+
+function setChatHistory(contact, messages) {
+  const history = loadChatHistory();
+  history[contact] = messages;
+  localStorage.setItem('chatHistory', JSON.stringify(history));
+}
+
+let usuarioActivo = null;
+
 $(document).ready(function () {
   $("#chatBtnEnviar").click(enviarMensaje);
   $("#chatInput").keypress(function (event) {
@@ -24,8 +37,8 @@ $(document).ready(function () {
       const botonEnviar = document.querySelector('#fileUploadBtn');
       const cabeceraChat = document.querySelector('.chat-header');
       const inputFiltro = document.querySelector('#filtroContactos');
+      const historial = loadChatHistory();
 
-      let usuarioActivo = null;
 
       data.usuarios.forEach(usuario => {
         // Crear un nuevo elemento de contacto para cada usuario
@@ -45,6 +58,8 @@ $(document).ready(function () {
                     </div>
                 </a>
             `;
+            
+
 
         // Añadir el evento de clic al elemento de contacto
         elementoContacto.addEventListener('click', function () {
@@ -58,14 +73,32 @@ $(document).ready(function () {
             contenedorConversacion.appendChild(elementoMensaje);
           });
 
+          historial[usuario.nombre]?.forEach(mensaje => {
+            renderMensaje(mensaje.message);
+          });
+
           // Actualizar la cabecera del chat
           cabeceraChat.innerHTML = `
                     <img src="${usuario.fotoPerfil}" alt="Foto de perfil" class="rounded-circle me-2" style="width: 40px; height: 40px; object-fit: cover;">
-                    <h6 class="text-dark d-flex " style="margin-left: 20px;">${usuario.nombre}</h6>
+                    <h6 class="text-dark d-flex" style="margin-left: 20px;" id="contactname">${usuario.nombre}</h6>
+                    <button type="button" class="btn btn-danger" id="historyRemover" style="margin-left: auto;">Borrar Chat</button>
                 `;
 
           // Establecer el usuario activo
-          usuarioActivo = usuario;
+          document.getElementById('historyRemover').addEventListener('click', function () {
+            // Borra los mensajes del usuario activo
+            usuarioActivo.mensajes = [];
+          
+            // Borra los mensajes del historial de chat
+            historial[usuarioActivo.nombre] = [];
+          
+            // Actualiza el historial de chat en el almacenamiento local
+            localStorage.setItem('chatHistory', JSON.stringify(historial));
+          
+            // Limpiar la conversación actual
+            contenedorConversacion.innerHTML = '';
+          });
+          usuarioActivo = usuario;          
         });
 
         // Añadir el elemento de contacto al contenedor de contactos
@@ -82,6 +115,9 @@ $(document).ready(function () {
           contacto.style.display = nombre.includes(filtro) ? '' : 'none';
         });
       });
+
+
+
 
       // Añadir el evento de clic al botón de enviar
       botonEnviar.addEventListener('click', function () {
@@ -123,24 +159,52 @@ function enviarArchivo(file) {
   };
   reader.readAsDataURL(file);
 }
-
-function enviarMensaje() {
-  var mensaje = $("#chatInput").val();
-  if (mensaje.trim() != '') {
-    var mensajeDiv = $('<div></div>').addClass('mensaje-enviado');
-    mensajeDiv.append($('<span></span>').text(mensaje));
-    var contenedor = $('<div></div>').addClass('contenedor-mensaje').append(mensajeDiv);
-    contenedor.on('contextmenu', function (e) {
-      e.preventDefault();
-    });
-    $('.overflow-auto').append(contenedor);
-    $("#chatInput").val('');
-
-    // Desplazar el chat hasta el final
-    $('.overflow-auto').scrollTop($('.overflow-auto')[0].scrollHeight);
+  function historyRemove(contact) {
+    const history = loadChatHistory();
+    delete history[contact];
+    localStorage.setItem('chatHistory', JSON.stringify(history));
   }
 
+  function enviarMensaje() {
+  var mensaje = $("#chatInput").val();
+
+  if (mensaje.trim() != '') {
+    const history = loadChatHistory();
+    history[usuarioActivo.nombre] = history[usuarioActivo.nombre] ?? [];
+
+    history[usuarioActivo.nombre].push({
+      from: 'you',
+      timestamp: new Date().toISOString(),
+      message: mensaje
+    });
+
+    fetch("/chat/send", {
+      method: "POST",
+      body: JSON.stringify({
+        to: usuarioActivo.nombre,
+        message: mensaje
+      }),
+    });
+
+    setChatHistory(usuarioActivo.nombre, history[usuarioActivo.nombre]);
+    renderMensaje(mensaje);
+  }
 }
+
+function renderMensaje(mensaje) {
+  var mensajeDiv = $('<div></div>').addClass('mensaje-enviado');
+  mensajeDiv.append($('<span></span>').text(mensaje));
+  var contenedor = $('<div></div>').addClass('contenedor-mensaje').append(mensajeDiv);
+  contenedor.on('contextmenu', function (e) {
+    e.preventDefault();
+  });
+  $('.overflow-auto').append(contenedor);
+  $("#chatInput").val('');
+
+  // Desplazar el chat hasta el final
+  $('.overflow-auto').scrollTop($('.overflow-auto')[0].scrollHeight);
+}
+
 var textarea = document.getElementById('chatInput');
   textarea.addEventListener('input', autoResize, false);
   
@@ -150,3 +214,28 @@ var textarea = document.getElementById('chatInput');
     }
   }
 
+
+
+/** 
+const history = {
+  "max": [
+    {
+      "from": "you",
+      "timstamp": "2021-10-01T10:00:00",
+      "message": "Hello"
+    }
+  ],
+  "pablo": [
+    {
+      "from": "you",
+      "timstamp": "2021-10-01T10:00:00",
+      "message": "Hello"
+    },
+    {
+      "from": "pablo",
+      "timstamp": "2021-10-01T10:00:01",
+      "message": "Hi"
+    }
+  ]
+}
+*/
