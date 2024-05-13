@@ -43,9 +43,7 @@
             </li>
           </ul>
           
-          <a href="register.html">
-            <button type="button" class="btn btn-primary">Registrarse</button>
-          </a>
+         
         </div>
       </div>
     </nav>
@@ -53,6 +51,11 @@
 
 
     <main>
+      <div class="container-fluid" style="display: flex; ; justify-content: end;">
+        <div class="row" style="width:auto;">
+          <a href="register.html">Registrarme</a>
+      </div>
+    </div>
       <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;"></div>
         <div class="row" style="width:auto;">
           <form action="" method="POST" class="form form-active col-md-4 mx-auto shadow-lg text-center mt-5 p-2">
@@ -76,13 +79,15 @@
                 Sesión</button>
             </a>
             <br><br>
-            <a class="password" href="recuperaContraseña.html">¿Olvidaste tu contraseña?</a>
+            <a href="recuperaContraseña.html">¿Olvidaste tu contraseña?</a>
        
           </form>
         </div>
       </div>
     </main>
-  <footer></footer>
+  <footer>
+   
+  </footer>
   <script src="../js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script>
@@ -91,8 +96,8 @@
       let pass = $("#pass");
 
       $("#btnValidar").click(function (event) {
-        if (validarFormulario(user)) {
-          
+        if (validarFormulario(user, pass)) {
+          window.location.replace("matcher.html");
         }
         else
           event.preventDefault();
@@ -107,13 +112,21 @@
       });
     });
 
-    function validarFormulario(user) {
+    function validarFormulario(user, pass) {
       if (user.val() === "") {
         user.css("border", "1px solid red");
         return false;
       } else {
         user.css("border", "1px solid green");
       }
+
+      if (pass.val() === "") {
+        pass.css("border", "1px solid red");
+        return false;
+      } else {
+        pass.css("border", "1px solid green");
+      }
+      return true;
     }
   </script>
 </body>

@@ -67,7 +67,7 @@
                     </p>
                     
                     <div class="container text-lg-end">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn btn-primary" id="btncod" data-bs-toggle="modal" data-bs-target="#exampleModal">
                           Enviar código
                         </button>
 
@@ -94,12 +94,33 @@
                 
             
                         <br><br>
-                        <a class="password" href="login.html">No cambiar contraseña</a>  
+                        <a href="login.html">No cambiar contraseña</a>  
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+      let user = $("#user");
+      
+
+      $("#btncod").click(function (event) {
+        if (validarFormulario(user)) {
+        }
+        else
+          event.preventDefault();
+      });
+
+      function validarFormulario(user) {
+      if (user.val() === "") {
+        user.css("border", "1px solid red");
+        return false;
+      } else {
+        user.css("border", "1px solid green");
+      }
+    }})
+    </script>
   </main>
   <footer></footer>
   <script src="../js/bootstrap.bundle.min.js"></script>
