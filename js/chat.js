@@ -20,7 +20,7 @@ $(document).ready(function () {
       event.preventDefault();
       enviarMensaje();
     }
-    autoResize.call(this); 
+    autoResize.call(this);
   });
   $('#fileInput').on('change', function () {
     var file = this.files[0];
@@ -28,6 +28,7 @@ $(document).ready(function () {
       enviarArchivo(file);
     }
   });
+  
   fetch('js/usuario.json')
     .then(response => response.json())
     .then(data => {
@@ -58,14 +59,13 @@ $(document).ready(function () {
                     </div>
                 </a>
             `;
-            
+
 
 
         // Añadir el evento de clic al elemento de contacto
         elementoContacto.addEventListener('click', function () {
           // Limpiar la conversación actual
           contenedorConversacion.innerHTML = '';
-
           // Mostrar la conversación del usuario seleccionado
           usuario.mensajes.forEach(mensaje => {
             const elementoMensaje = document.createElement('p');
@@ -73,7 +73,7 @@ $(document).ready(function () {
             contenedorConversacion.appendChild(elementoMensaje);
           });
 
-          historial[usuario.nombre]?.forEach(mensaje => {
+          loadChatHistory()[usuario.nombre]?.forEach(mensaje => {
             renderMensaje(mensaje.message);
           });
 
@@ -88,17 +88,17 @@ $(document).ready(function () {
           document.getElementById('historyRemover').addEventListener('click', function () {
             // Borra los mensajes del usuario activo
             usuarioActivo.mensajes = [];
-          
+
             // Borra los mensajes del historial de chat
             historial[usuarioActivo.nombre] = [];
-          
+
             // Actualiza el historial de chat en el almacenamiento local
             localStorage.setItem('chatHistory', JSON.stringify(historial));
-          
+
             // Limpiar la conversación actual
             contenedorConversacion.innerHTML = '';
           });
-          usuarioActivo = usuario;          
+          usuarioActivo = usuario;
         });
 
         // Añadir el elemento de contacto al contenedor de contactos
@@ -108,7 +108,7 @@ $(document).ready(function () {
       // Añadir el evento de entrada al input de filtro
       inputFiltro.addEventListener('input', function () {
         const filtro = inputFiltro.value.toLowerCase();
-      
+
         // Filtrar los contactos
         contenedorContactos.querySelectorAll('.contacto').forEach(contacto => {
           const nombre = contacto.querySelector('h6').textContent.toLowerCase();
@@ -159,13 +159,13 @@ function enviarArchivo(file) {
   };
   reader.readAsDataURL(file);
 }
-  function historyRemove(contact) {
-    const history = loadChatHistory();
-    delete history[contact];
-    localStorage.setItem('chatHistory', JSON.stringify(history));
-  }
+function historyRemove(contact) {
+  const history = loadChatHistory();
+  delete history[contact];
+  localStorage.setItem('chatHistory', JSON.stringify(history));
+}
 
-  function enviarMensaje() {
+function enviarMensaje() {
   var mensaje = $("#chatInput").val();
 
   if (mensaje.trim() != '') {
@@ -206,13 +206,13 @@ function renderMensaje(mensaje) {
 }
 
 var textarea = document.getElementById('chatInput');
-  textarea.addEventListener('input', autoResize, false);
-  
-  function autoResize() {
-    if (this.value.trim() === '') {
-      this.style.height = '20px'; // Reset the height to the initial height
-    }
+textarea.addEventListener('input', autoResize, false);
+
+function autoResize() {
+  if (this.value.trim() === '') {
+    this.style.height = '20px'; // Reset the height to the initial height
   }
+}
 
 
 
