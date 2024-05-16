@@ -7,6 +7,7 @@
   <title>Inicio de sesión</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="js/bootstrap.bundle.min.js"></script>
+  
 
 </head>
 
@@ -97,65 +98,7 @@
   </footer>
   <script src="../js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script>
-   $(document).ready(function () {
-  let user = $("#user");
-  let pass = $("#pass");
-  let mensajesError = $("#mensajesError");
-
-  $("#btnValidar").click(function (event) {
-    event.preventDefault();
-    validarFormulario(user, pass, mensajesError);
-  });
-
-  user.keyup(function () {
-    validarEmail(user, mensajesError);
-  });
-
-  pass.keyup(function () {
-    validarContraseña(pass, mensajesError);
-  });
-});
-
-function validarFormulario(user, pass, mensajesError) {
-  mensajesError.empty(); 
-  let validEmail = validarEmail(user, mensajesError);
-  let validPass = validarContraseña(pass, mensajesError);
-
-  if (!validEmail) {
-    mensajesError.append("<p>El correo electrónico no es válido.</p>");
-  }
-  if (!validPass) {
-    mensajesError.append("<p>La contraseña debe tener al menos 8 caracteres.</p>");
-  }
-
-  if (validEmail && validPass) {
-   
-    window.location.replace("matcher.html");
-  }
-}
-
-function validarEmail(user, mensajesError) {
-  let email = user.val().trim();
-  let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    return false;
-  } else {
-    return true;
-  }
-}
-
-function validarContraseña(pass, mensajesError) {
-  let contraseña = pass.val().trim();
-  if (contraseña.length < 8) {
-    return false;
-  } else {
-    return true;
-  }
-}
-
-
-  </script>
+  <script src="js/validaciones.js"></script>
 </body>
 
 </html>
