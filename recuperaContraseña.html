@@ -68,28 +68,8 @@
                           Enviar código
                         </button>
 
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body d-flex justify-content-center">
-                                        Hemos enviado tu código
-                                        </div>
-                                        <div class="modal-footer">
-                                    
-                                        <a href="login.html">
-                                        <button type="button" class="btn btn-primary">Aceptar</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                 
-            
                         <br>
                         <a href="login.html">No cambiar contraseña</a>  
                    
@@ -102,51 +82,26 @@
           </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function () {
-  let user = $("#user");
-  let mensajesError = $("#mensajesError");
-
-  $("#btnValidar").click(function (event) {
-    event.preventDefault();
-    validarFormulario(user, mensajesError);
-  });
-
-  user.keyup(function () {
-    validarEmail(user, mensajesError);
-  });
-
-});
-
-function validarFormulario(user, mensajesError) {
-  mensajesError.empty();
-  let validEmail = validarEmail(user, mensajesError);
-  
-
-  if (!validEmail) {
-    mensajesError.append("<p>El correo electrónico no es válido.</p>");
-  }
-
-
-  if (validEmail) {
-    window.location.replace("matcher.html");
-  }
-}
-
-function validarEmail(user, mensajesError) {
-  let email = user.val().trim();
-  let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    return false;
-  } else {
-    return true;
-  }
-}
-    </script>
+    
   </main>
-  <footer></footer>
+  <footer>
+    <div class="container-fluid" style="width: auto; display: flex; justify-content: center;">
+      <div class="row">
+        <div class="col-xl-4">
+        Al hacer clic en "Enviar código", se le enviará un código, para
+        <br>que pueda cambiar de contraseña, si por el contrario ya no desea 
+        <br>cambiar su contraseña presione "No cambiar contraseña"
+
+      </div>
+      </div>
+    </div>
+  </footer>
+  <div class="container-fluid" style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+    <div class="row" style="width:auto;">
+    <div id="mensajesError" class="text-danger"></div>
   <script src="/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="js/validaRecuperContraseña.js"></script>
 </body>
 
 </html>
