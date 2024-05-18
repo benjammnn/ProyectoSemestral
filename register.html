@@ -149,7 +149,7 @@
                 <label for="other">Otro</label>
               </p><br>
               <button type="submit" class="btn btn-primary" style="width: 189px; height: 40px;">Registrarse</button>
-              <br><a class="password" href="login.html">Tengo cuenta</a>
+              <br><a href="login.html">Tengo cuenta</a>
             </div>
           </div>
         </form>
@@ -166,88 +166,7 @@
       </div>
     </div>
   </footer>
-  <script>
-    $(document).ready(function () {
-      $("#formulario").on("submit", function (event) {
-        event.preventDefault();
-
-        // Variables
-        let nombres = $("#nombres").val().trim();
-        let apellidos = $("#apellidos").val().trim();
-        let rut = $("#rut").val().trim();
-        let carrera = $("#carrera").val().trim();
-        let email = $("#mail").val().trim();
-        let password = $("#password").val().trim();
-        let day = $("#day").val();
-        let month = $("#birthMonth").val();
-        let year = $("#year").val();
-        let gender = $("input[name='gender']:checked").val();
-
-        // Validaciones
-        let valid = true;
-        let errorMessages = "";
-
-        // Nombres y apellidos no vacíos
-        if (!nombres) {
-          valid = false;
-          errorMessages += "<p>El campo Nombres es obligatorio.</p>";
-        }
-
-        if (!apellidos) {
-          valid = false;
-          errorMessages += "<p>El campo Apellidos es obligatorio.</p>";
-        }
-
-        // RUT formato correcto (simple validación básica)
-        let rutRegex = /^[0-9]{2}\.[0-9]{3}\.[0-9]{3}-[0-9kK]{1}$/;
-        if (!rutRegex.test(rut)) {
-          valid = false;
-          errorMessages += "<p>El campo RUT no tiene el formato correcto.</p>";
-        }
-
-        // Carrera no vacía
-        if (!carrera) {
-          valid = false;
-          errorMessages += "<p>El campo Carrera es obligatorio.</p>";
-        }
-
-        // Email formato correcto
-        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          valid = false;
-          errorMessages += "<p>El campo Email no tiene el formato correcto.</p>";
-        }
-
-        // Contraseña no vacía
-        if (!password) {
-          valid = false;
-          errorMessages += "<p>El campo Contraseña es obligatorio.</p>";
-        }
-
-        // Fecha de nacimiento válida
-        if (!day || !month || !year) {
-          valid = false;
-          errorMessages += "<p>La Fecha de nacimiento es obligatoria.</p>";
-        }
-
-        // Género seleccionado
-        if (!gender) {
-          valid = false;
-          errorMessages += "<p>El campo Sexo es obligatorio.</p>";
-        }
-
-        // Mostrar mensajes de error
-        if (!valid) {
-          $("#mensajesError").html(errorMessages).show();
-        } else {
-          // Si todo es válido, puedes enviar el formulario o realizar otras acciones
-          window.location.href = "login.html";
-          // Aquí puedes enviar el formulario usando AJAX o permitir el envío estándar
-          // this.submit();
-        }
-      });
-    });
-  </script>
+  <script src="js/validacionesRegister"></script>
 </body>
 
 </html>
