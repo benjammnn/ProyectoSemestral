@@ -1,0 +1,27 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "Live Preview",
+			"workspacePath": "c:\\Users\\mares\\matcherProyect",
+			"problemMatcher": [],
+			"label": "Live Preview: Run Server"
+		},
+		{
+            "label": "Run Django Server",
+            "type": "shell",
+            "command": "python manage.py runserver",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+	]
+}
