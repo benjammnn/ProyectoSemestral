@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   {% load static %}
-  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'myapp/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
   <style>
     body {
       background-color: grey;
@@ -16,13 +16,13 @@
 </head>
 
 <body>
-  <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'jquery/jquery-3.7.1.min.js' %}"></script>
+  <script src="{% static 'myapp/bootstrap/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'myapp/jquery/jquery-3.7.1.min.js' %}"></script>
   <header>
     <nav class="navbar navbar-expand-md navbar-light" style="background-color:steelblue;">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'index' %}">
-          <img src="{% static 'img/logoduoc2.png' %}" alt="" width="80" height="">
+          <img src="{% static 'myapp/img/logoduoc2.png' %}" alt="" width="80" height="">
           Matcher
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -63,7 +63,7 @@
   </header>
   <main>
     <div class="container-fluid">
-      <img src="{% static 'img/fondo-bienvenidos.jpg' %}" class="img-fluid" alt="FondoInicio">
+      <img src="{% static 'myapp/img/fondo-bienvenidos.jpg' %}" class="img-fluid" alt="FondoInicio">
     </div>
   </main>
   <footer class="footer p-3">
@@ -74,10 +74,10 @@
             <p class="lh-sm">Siguenos en nuestras RRSS:</p>
           </div>
           <div class="d-flex flex-row">
-            <img src="{% static 'img/instagram2.png' %}" class="img-fluid mx-3" width="30" height="30">
-            <img src="{% static 'img/facebook2.png' %}" class="img-fluid mx-3" width="30" height="30">
-            <img src="{% static 'img/whatsapp2.png' %}" class="img-fluid mx-3" width="30" height="30">
-            <img src="{% static 'img/X.png' %}" class="img-fluid mx-3" width="30" height="30">
+            <img src="{% static 'myapp/img/instagram2.png' %}" class="img-fluid mx-3" width="30" height="30">
+            <img src="{% static 'myapp/img/facebook2.png' %}" class="img-fluid mx-3" width="30" height="30">
+            <img src="{% static 'myapp/img/whatsapp2.png' %}" class="img-fluid mx-3" width="30" height="30">
+            <img src="{% static 'myapp/img/X.png' %}" class="img-fluid mx-3" width="30" height="30">
           </div>
         </div>
         <div class="col">

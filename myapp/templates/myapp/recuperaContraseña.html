@@ -16,8 +16,8 @@
   <header>
     <nav class="navbar navbar-expand-md navbar-light" style="background-color:steelblue;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="Index.html">
-          <img src="img/logoduoc2.png" alt="" width="80" height="">
+        <a class="navbar-brand" href="{% url 'index' %}">
+          <img src="myapp/img/logoduoc2.png" alt="" width="80" height="">
           Matcher
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -27,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="Index.html">Inicio</a>
+              <a class="nav-link" href="{% url 'index' %}">Inicio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Caracteristicas</a>
@@ -44,7 +44,7 @@
               </ul>
             </li>
           </ul>
-          <a href="register.html" class="ms-auto pe-3">
+          <a href="{% url 'register' %}" class="ms-auto pe-3">
             <button type="button" class="btn btn-primary">Registrarse</button>
           </a>
         </div>
@@ -76,7 +76,7 @@
 
 
           <br>
-          <a href="login.html">No cambiar contraseña</a>
+          <a href="{% url 'login' %}">No cambiar contraseña</a>
 
         </div>
       </form>

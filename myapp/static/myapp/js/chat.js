@@ -29,7 +29,7 @@ $(document).ready(function () {
     }
   });
   
-  fetch('js/usuario.json')
+  fetch("{% static 'myapp/js/usuario.json' %}")
     .then(response => response.json())
     .then(data => {
       const contenedorContactos = document.querySelector('.list-group');
