@@ -53,7 +53,6 @@
 
 
     <main>
-      
       <div class="container-fluid" style="display: flex; ; justify-content: end;">
         <div class="row" style="width:auto;">
           <a href="{% url 'register' %}">Registrarme</a>
@@ -61,7 +60,7 @@
     </div>
         <div class="row" style="width:auto;">
           <form action="{% url 'login' %}" method="POST" class="form form-active col-md-4 mx-auto shadow-lg text-center mt-5 p-2">
-
+               {% csrf_token %}
             <h2 class="title title-second" style="display: flex; align-items: center; justify-content: center;">Inicio de
             sesión</h2>
             <br>
