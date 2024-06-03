@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio de sesión</title>
   {% load static %}
-  <link rel="stylesheet" href="{% static 'myapp/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 
 <body>
-  <script src="{% static 'myapp/bootstrap/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="{% static 'myapp/js/validacionesLogin.js' %}"></script>
+  <script type="module" src="{% static 'js/validacionesLogin.js' %}"></script>
   <header>
     <nav class="navbar navbar-expand-md navbar-light" style="background-color:steelblue;">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'index' %}">
-          <img src="{% static 'myapp/img/logoduoc2.png' %}" alt="" width="80" height="">
+          <img src="{% static 'img/logoduoc2.png' %}" alt="" width="80" height="">
           Matcher
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -67,7 +67,7 @@
             
             <p>
               <label class="label-input">
-                <input type="email" placeholder="Email" name="user" id="user">
+                <input type="email" placeholder="Email" name="user" id="email">
               </label>
             </p>
             <p>
@@ -76,9 +76,12 @@
               </label>
             </p>
               <a href="{% url 'matcher2' %}">
-              <button type="submit" class="btn btn-primary" style="width: 189px; height: 40px;" id="btnValidar">Iniciar
+              <button  class="btn btn-primary" style="width: 189px; height: 40px;" id="btnLogin">Iniciar
                 Sesión</button>
               </a>
+              <div id="mensajeError" style="color: red; margin-top: 2em;">
+
+              </div>
             <br><br>
             <a href="">¿Olvidaste tu contraseña?</a>
        
