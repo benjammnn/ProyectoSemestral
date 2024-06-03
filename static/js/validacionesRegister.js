@@ -6,8 +6,7 @@ $(document).ready(function () {
 
         let nombres = $("#nombres");
         let apellidos = $("#apellidos");
-        let rut = $("#rut");
-        let carrera = $("#carrera");
+        let carrera = $("#carrera")
         let email = $("#mail");
         let password = $("#password");
         let day = $("#day");
@@ -19,7 +18,6 @@ $(document).ready(function () {
 
         valid &= validarCampoNoVacio(nombres, "Nombres", errorMessages);
         valid &= validarCampoNoVacio(apellidos, "Apellidos", errorMessages);
-        valid &= validarRut(rut, errorMessages);
         valid &= validarCampoNoVacio(carrera, "Carrera", errorMessages);
         valid &= validarEmail(email, errorMessages);
         valid &= validarContraseña(password, errorMessages);
