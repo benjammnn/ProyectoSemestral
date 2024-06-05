@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   {% load static %}
-  <link rel="stylesheet" href="{% static 'myapp/css/bootstrap.min.css' %}">
-  <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <style>
     body {
       background-color: grey;
@@ -16,13 +16,11 @@
 </head>
 
 <body>
-  <script src="{% static 'myapp/bootstrap/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'myapp/jquery/jquery-3.7.1.min.js' %}"></script>
   <header>
     <nav class="navbar navbar-expand-md navbar-light" style="background-color:steelblue;">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'index' %}">
-          <img src="{% static 'myapp/img/logoduoc2.png' %}" alt="" width="80" height="">
+          <img src="{% static 'img/logoduoc2.png' %}" alt="" width="80" height="">
           Matcher
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -35,35 +33,32 @@
               <a class="nav-link" href="{% url 'index' %}">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Caracteristicas</a>
+              <a class="nav-link" href="#">Características</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sobre Nosotros
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#collapseOne.PestañaInfo.html">Unete a nuestro equipo<a></li>
-                <li><a class="dropdown-item" href="">Preguntas frecuentes</a></li>
-                <li><a class="dropdown-item" href="">Contáctanos</a></li>
+                <li><a class="dropdown-item" href="#collapseOne.PestañaInfo.html">Únete a nuestro equipo<a></li>
+                <li><a class="dropdown-item" href="#">Preguntas frecuentes</a></li>
+                <li><a class="dropdown-item" href="#">Contáctanos</a></li>
               </ul>
             </li>
           </ul>
-          
           <a href="{% url 'login' %}" class="ms-auto pe-3">
             <button type="button" class="btn btn-primary">Iniciar Sesión</button>
           </a>
           <a href="{% url 'register' %}">
             <button type="button" class="btn btn-primary">Registrarse</button>
           </a>
-            
-          
         </div>
       </div>
     </nav>
   </header>
   <main>
     <div class="container-fluid">
-      <img src="{% static 'myapp/img/fondo-bienvenidos.jpg' %}" class="img-fluid" alt="FondoInicio">
+      <img src="{% static 'img/fondo-bienvenidos.jpg' %}" class="img-fluid" alt="FondoInicio">
     </div>
   </main>
   <footer class="footer p-3">
@@ -71,18 +66,18 @@
       <div class="row">
         <div class="col">
           <div class="container-fluid" style="color: black; font-size: 20px; font-weight:bold;">
-            <p class="lh-sm">Siguenos en nuestras RRSS:</p>
+            <p class="lh-sm">Síguenos en nuestras RRSS:</p>
           </div>
           <div class="d-flex flex-row">
-            <img src="{% static 'myapp/img/instagram2.png' %}" class="img-fluid mx-3" width="30" height="30">
-            <img src="{% static 'myapp/img/facebook2.png' %}" class="img-fluid mx-3" width="30" height="30">
-            <img src="{% static 'myapp/img/whatsapp2.png' %}" class="img-fluid mx-3" width="30" height="30">
-            <img src="{% static 'myapp/img/X.png' %}" class="img-fluid mx-3" width="30" height="30">
+            <img src="{% static 'img/instagram2.png' %}" class="img-fluid mx-3" width="30" height="30">
+            <img src="{% static 'img/facebook2.png' %}" class="img-fluid mx-3" width="30" height="30">
+            <img src="{% static 'img/whatsapp2.png' %}" class="img-fluid mx-3" width="30" height="30">
+            <img src="{% static 'img/X.png' %}" class="img-fluid mx-3" width="30" height="30">
           </div>
         </div>
         <div class="col">
           <div class="container-fluid" style="color: black; font-size: 20px; font-weight:bold;">
-            <p class="lh-sm">Contactanos:</p>
+            <p class="lh-sm">Contáctanos:</p>
           </div>
           <div class="container-fluid" style="color: black; font-size: 20px;">
             <p class="lh-1">+562 79409867</p>
@@ -99,18 +94,19 @@
         </div>
         <div class="col">
           <div class="container-fluid" style="color: black; font-size: 20px; font-weight:bold;">
-            <p class="lh-sm">Terminos y condiciones:</p>
+            <p class="lh-sm">Términos y condiciones:</p>
           </div>
           <div class="container-fluid lh-sm" style="color: black; font-size: 20px;">
-            <a href="#" class="link-dark">Politica de privacidad</a><br>
-            <a href="#" class="link-dark">Politica de uso de datos</a>
+            <a href="#" class="link-dark">Política de privacidad</a><br>
+            <a href="#" class="link-dark">Política de uso de datos</a>
           </div>
         </div>
       </div>
     </div>
   </footer>
 
-
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
 </body>
 
 </html>

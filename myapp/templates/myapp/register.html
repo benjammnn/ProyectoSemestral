@@ -13,7 +13,7 @@
 <body>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
-  <script type="module" src="{% static 'js/validacionesRegister.js' %}"></script>
+  <script src="{% static 'js/validacionesRegister.js' %}" type="module"></script>
   <header>
     <nav class="navbar navbar-expand-md navbar-light" style="background-color:steelblue;">
       <div class="container-fluid">
@@ -31,10 +31,10 @@
               <a class="nav-link" href="{% url 'index' %}">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Características</a>
-            </li>
+              <a class="nav-link" href="#">Características</a></li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
                 Sobre Nosotros
               </a>
               <ul class="dropdown-menu">
@@ -73,7 +73,7 @@
             <div style="text-align: center;">
               <p>
               <label class="label-input" for="carrera">
-                <input type="text" placeholder="Carrera" name="carrera" id="carrera" style="width: 381px;"  required>
+                <input type="text" placeholder="Carrera" name="carrera" id="carrera" style="width: 381px;" required>
               </label>
               </p>
             </div>
@@ -98,10 +98,12 @@
                 Fecha de nacimiento
              
                 <label for="birthDate"></label>
-                <input type="date" id="birthDate" name="birthDate" required>
-                <br>
-                Sexo
-                <br>
+                <input type="date" id="birthDate" name="birthDate" style= "width: 227px;" required>
+              </p>
+               
+                <p>
+                Género
+                
 
                 <input type="radio" id="male" name="gender" value="masculino" required>
                 <label for="male">Masculino</label>
@@ -111,7 +113,8 @@
 
                 <input type="radio" id="other" name="gender" value="otro" required>
                 <label for="other">Otro</label>
-              </p><br>
+              </p>
+              <br>
               <button type="submit" class="btn btn-primary" style="width: 189px; height: 40px;">Registrarse</button>
               <br><a href="{% url 'login' %}">Tengo cuenta</a>
             </div>
