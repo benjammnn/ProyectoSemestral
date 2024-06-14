@@ -5,8 +5,8 @@ $(document).ready(function () {
     errorMessages.empty().hide();
 
     let nombres = $("#nombres");
-    let apellidos = $("#apellidos");
-    let carrera = $("#carrera");
+    let Appat = $("#Appat");
+    let Apmat = $("#Apmat");
     let email = $("#mail");
     let password = $("#password");
     let birthDate = $("#birthDate");
@@ -15,8 +15,8 @@ $(document).ready(function () {
     let valid = true;
 
     valid &= validarCampoNoVacio(nombres, "Nombres", errorMessages);
-    valid &= validarCampoNoVacio(apellidos, "Apellidos", errorMessages);
-    valid &= validarCampoNoVacio(carrera, "Carrera", errorMessages);
+    valid &= validarCampoNoVacio(Appat, "Apellido Paterno", errorMessages);
+    valid &= validarCampoNoVacio(Apmat, "Apellido Materno", errorMessages);
     valid &= validarEmail(email, errorMessages);
     valid &= validarContraseña(password, errorMessages);
     valid &= validarFechaNacimiento(birthDate, errorMessages);
@@ -85,6 +85,23 @@ function validarContraseña(pass, mensajesError) {
 function validarFechaNacimiento(birthDate, mensajesError) {
   if (birthDate.val().trim() === "") {
     mensajesError.append("<p>La Fecha de nacimiento es obligatoria.</p>");
+    return false;
+  }
+
+  let birth = new Date(birthDate.val());
+  let today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  let m = today.getMonth() - birth.getMonth();
+  
+  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+    age--;
+  }
+
+  if (age < 18) {
+    mensajesError.append("<p>Debes tener al menos 18 años para registrarte.</p>");
+    return false;
+  } else if (age > 100) {
+    mensajesError.append("<p>La edad no puede ser mayor a 100 años.</p>");
     return false;
   }
   return true;
