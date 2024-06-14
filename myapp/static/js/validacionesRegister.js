@@ -23,7 +23,7 @@ $(document).ready(function () {
     valid &= validarGenero(gender, errorMessages);
 
     if (valid) {
-      window.location.href = "{% url 'login' %}";
+      window.location.href = "";
     } else {
       errorMessages.show();
     }
