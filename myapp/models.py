@@ -4,19 +4,19 @@ from django.utils import timezone
 
 class Genero(models.Model):
     id_genero = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=50)
+    nombre = models.CharField(max_length=50, blank=False, null=False)
 
     def __str__(self):
-        return self.nombre
+        return str(self.nombre)
     
 class User(models.Model):
     id_user = models.AutoField(primary_key=True)
-    id_genero = models.ForeignKey(Genero, on_delete=models.CASCADE, related_name='id_user_genero')
     nombre = models.CharField(max_length=50)
     apellidos = models.CharField(max_length=50)
     email = models.EmailField(max_length=100, unique=True)
     password = models.CharField(max_length=50 )
     fecha_nacimiento = models.DateField()
+    id_genero = models.ForeignKey(Genero, on_delete=models.CASCADE, related_name='id_user_genero')
 
     def __str__(self):
         return self.email
