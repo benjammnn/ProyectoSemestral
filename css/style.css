@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: #fefefe;
+}
+
+p{
+    margin: 5px;
+}
+
+
+
+
+
+
+
+

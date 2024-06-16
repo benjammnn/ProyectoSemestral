@@ -24,16 +24,18 @@ def register(request):
         }
         return render(request, 'myapp/register.html', context)
     else:
+        id_user = request.POST["id_user"]
         nombre = request.POST["nombre"]
         apellidos = request.POST["apellidos"]
         email = request.POST["email"]
         password  = request.POST["password"]
         fecha_nacimiento = request.POST["fecha_nacimiento"]
-        id_genero = request.POST["id_user_genero"]
+        genero = request.POST["genero"]
         
-        objGenero = Genero.objects.get(id_genero=Genero)
+        objGenero = Genero.objects.get(id_genero=genero)
 
         obj = User.objects.create(
+            id_user=id_user,
             nombre=nombre,
             apellidos=apellidos,
             email=email,
@@ -41,6 +43,11 @@ def register(request):
             fecha_nacimiento=fecha_nacimiento,
             id_genero=objGenero
         )
+        obj.save()
+        context = {
+            "mensaje": "Se ha registrado el usuario correctamente",
+        }
+        return render(request, 'myapp/login.html', context)
 
 
 def matcher2 (request):
