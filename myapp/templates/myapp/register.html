@@ -13,7 +13,6 @@
 <body>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'js/validacionesRegister.js' %}" type="module"></script>
   <header>
     <nav class="navbar navbar-expand-md navbar-light" style="background-color:steelblue;">
       <div class="container-fluid">
@@ -31,7 +30,8 @@
               <a class="nav-link" href="{% url 'index' %}">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Características</a></li>
+              <a class="nav-link" href="#">Características</a>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
@@ -54,44 +54,39 @@
   <main>
     <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;">
       <div class="row" style="width:auto;">
-        <form id="formulario" action="" method="POST" class="form form-active col-md-12 mx-auto shadow-lg text-center p-4">
+        <form id="formulario" action="{% url 'register'%}" method="POST"
+          class="form form-active col-md-12 mx-auto shadow-lg text-center p-4">
           {% csrf_token %}
-          <h2 class="title title-second" style="display: flex; align-items: center; justify-content: center;">Registro</h2>
+          <h2 class="title title-second" style="display: flex; align-items: center; justify-content: center;">Registro
+          </h2>
           <br>
           <div id="mensajesError" class="alert alert-danger" style="display: none;"></div>
           <div class="container-fluid">
             <div style="text-align: center;">
               <label class="label-input" for="nombres">
-                <input type="text" placeholder="Nombres" name="nombres" id="nombres" style="width: 381px;" required>
+                <input type="text" placeholder="Nombres" name="nombre" id="nombres" style="width: 381px;" required>
               </label>
             </div>
 
             <div style="text-align: center;">
               <p>
-              <label class="label-input" for="appat">
-                <input type="text" placeholder="Apellido paterno" name="appat" id="appat" style="width: 381px;" required>
-              </label>
-            </p>
-            </div>
-
-            <div style="text-align: center;">
-              <p>
-              <label class="label-input" for="apmat">
-                <input type="text" placeholder="Apellido materno" name="apmat" id="apmat" style="width: 381px;" required>
-              </label>
+                <label class="label-input" for="appat">
+                  <input type="text" placeholder="Apellido paterno" name="apellidos" id="Appat" style="width: 381px;" required>
+                </label>
               </p>
             </div>
-           
+
             <div style="text-align: center;">
               <p>
                 <label class="label-input" for="mail">
-                  <input type="email" placeholder="Email" id="mail" name="mail" style="width: 381px;" required>
+                  <input type="email" placeholder="Email" id="mail" name="email" style="width: 381px;" required>
                 </label>
               </p>
             </div>
             <div style="text-align: center;">
               <label class="label-input" for="password">
-                <input type="password" placeholder="Contraseña" id="password" name="password" style="width: 381px;" required>
+                <input type="password" placeholder="Contraseña" id="password" name="password" style="width: 381px;"
+                  required>
               </label>
             </div>
           </div>
@@ -100,30 +95,25 @@
             <div style="text-align: center;">
               <p>
                 Fecha de nacimiento
-             
+
                 <label for="birthDate"></label>
-                <input type="date" id="birthDate" name="birthDate" style= "width: 227px;" required>
+                <input type="date" id="birthDate" name="fecha_nacimiento" style="width: 227px;" required>
               </p>
-               
-                <p>
-                Género
-                
 
-                <input type="radio" id="male" name="gender" value="masculino" required>
-                <label for="male">Masculino</label>
+              <label for="genero">Género:</label>
+              <select name="genero" id="genero" required>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otro">Otro</option>
+              </select>
 
-                <input type="radio" id="female" name="gender" value="femenino" required>
-                <label for="female">Femenino</label>
-
-                <input type="radio" id="other" name="gender" value="otro" required>
-                <label for="other">Otro</label>
               </p>
               <br>
               <button type="submit" class="btn btn-primary" style="width: 189px; height: 40px;">Registrarse</button>
-              <br><a href="{% url 'login' %}">Tengo cuenta</a>
             </div>
           </div>
         </form>
+        <br><a href="{% url 'login' %}">Tengo cuenta</a>
       </div>
     </div>
   </main>

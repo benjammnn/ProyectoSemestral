@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
-from .models import Genero, User, Foto, UsuarioSettings, Match, Mensaje, chat
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import User, Foto, UsuarioSettings, Match, Mensaje, Chat
 from django.contrib.auth import authenticate, login
+from .forms import UserForm
 
 # Create your views here.
 def index(request):
@@ -14,34 +15,26 @@ def login(request):
 
 
 
-
-
 def register(request):
-    if request.method == 'POST':
-        generos = Genero.objects.all()
-        context = {
-            "generos": generos,
-        }
-        return render(request, 'myapp/register.html', context)
+    if request.method != 'POST':
+        return render(request, 'myapp/register.html')
     else:
-        id_user = request.POST["id_user"]
-        nombre = request.POST["nombre"]
-        apellidos = request.POST["apellidos"]
-        email = request.POST["email"]
-        password  = request.POST["password"]
-        fecha_nacimiento = request.POST["fecha_nacimiento"]
-        genero = request.POST["genero"]
-        
-        objGenero = Genero.objects.get(id_genero=genero)
+        nombre = request.POST.get("nombre")
+        apellidos = request.POST.get("apellidos")
+        email = request.POST.get("email")
+        password  = request.POST.get("password")
+        fecha_nacimiento = request.POST.get("fecha_nacimiento")
+        genero = request.POST.get("genero")
+        activo = request.POST.get("activo") == "on"
 
         obj = User.objects.create(
-            id_user=id_user,
             nombre=nombre,
             apellidos=apellidos,
             email=email,
             password=password,
             fecha_nacimiento=fecha_nacimiento,
-            id_genero=objGenero
+            genero=genero,
+            activo=activo
         )
         obj.save()
         context = {

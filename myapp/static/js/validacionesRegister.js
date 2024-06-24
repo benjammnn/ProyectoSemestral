@@ -6,7 +6,6 @@ $(document).ready(function () {
 
     let nombres = $("#nombres");
     let Appat = $("#Appat");
-    let Apmat = $("#Apmat");
     let email = $("#mail");
     let password = $("#password");
     let birthDate = $("#birthDate");
@@ -16,7 +15,6 @@ $(document).ready(function () {
 
     valid &= validarCampoNoVacio(nombres, "Nombres", errorMessages);
     valid &= validarCampoNoVacio(Appat, "Apellido Paterno", errorMessages);
-    valid &= validarCampoNoVacio(Apmat, "Apellido Materno", errorMessages);
     valid &= validarEmail(email, errorMessages);
     valid &= validarContraseña(password, errorMessages);
     valid &= validarFechaNacimiento(birthDate, errorMessages);

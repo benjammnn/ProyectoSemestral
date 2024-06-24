@@ -2,65 +2,66 @@ from django.db import models
 from django.utils import timezone
 
 
-class Genero(models.Model):
-    id_genero = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=50, blank=False, null=False)
-
-    def __str__(self):
-        return str(self.nombre)
     
 class User(models.Model):
-    id_user = models.AutoField(primary_key=True)
+    GENERO_CHOICES = [
+        ('Masculino', 'Masculino'),
+        ('Femenino', 'Femenino'),
+        ('Otro', 'Otro'),
+
+    ]
+
     nombre = models.CharField(max_length=50)
     apellidos = models.CharField(max_length=50)
     email = models.EmailField(max_length=100, unique=True)
     password = models.CharField(max_length=50 )
     fecha_nacimiento = models.DateField()
-    id_genero = models.ForeignKey(Genero, on_delete=models.CASCADE, related_name='id_user_genero')
+    genero = models.CharField(max_length=10, choices=GENERO_CHOICES)
+    activo = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.email
+        return f'{self.nombre} {self.apellidos}'
     
 class Foto (models.Model):
-    id_foto = models.AutoField(primary_key=True)
-    id_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='id_user_foto')
+    
+    usuarioFoto = models.ForeignKey(User, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to='myapp/static/img')
 
     def __str__(self):
-        return self.id_user.email
+        return f'{self.usuarioFoto.nombre} {self.usuarioFoto.apellidos}'
 
 class UsuarioSettings(models.Model):
-    id_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='id_user_settings')
-    id_genero = models.ForeignKey(Genero, on_delete=models.CASCADE, related_name='id_settings_genero')
-    id_foto = models.ForeignKey(Foto, on_delete=models.CASCADE, related_name='id_settings_foto')
+    userConfig = models.ForeignKey(User, on_delete=models.CASCADE)
+    fotoConfig = models.ForeignKey(Foto, on_delete=models.CASCADE)
     foto_perfil = models.ImageField(upload_to='myapp/static/img')
     descripcion = models.TextField()
     carrera = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.id_user.email
+        return self.userConfig.email
     
 class Match(models.Model):
-    id_match = models.AutoField(primary_key=True)
-    id_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='id_match_user')
-    id_user_matched = models.ForeignKey(User, on_delete=models.CASCADE, related_name='id_user_matched')
+    
+    userMatch_1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userMatch_1')
+    userMatch_2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userMatch_2')
     
     def __str__(self):
-        return self.id_user.nombre + ' - ' + self.id_user_matched.nombre
+        return self.UserMatcher_1.nombre + ' - ' + self.UserMatcher_2.nombre
     
 
 class Mensaje(models.Model):
-    id_mensaje = models.AutoField(primary_key=True)
-    id_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='id_user_mensaje')
-    id_user_matched = models.ForeignKey(User, on_delete=models.CASCADE, related_name='id_user_matched_mensaje')
+    userMensaje_1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userMensaje_1')
+    userMensaje_2 = models.ForeignKey(User, on_delete=models.CASCADE , related_name='userMensaje_2')
     mensaje = models.TextField()
     fecha_mensaje = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
-        return self.id_user.nombre + ' - ' + self.id_user_matched.nombre
+        return self.userMensaje_1.nombre + ' - ' + self.userMensaje_2.nombre
 
-class chat (models.Model):
-    id_chat = models.AutoField(primary_key=True)
-    id_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='id_user_chat')
-    id_user_matched = models.ForeignKey(User, on_delete=models.CASCADE, related_name='id_user_matched_chat')
-    id_mensaje = models.ForeignKey(Mensaje, on_delete=models.CASCADE, related_name='id_mensaje_chat')
+class Chat (models.Model):
+    userChat_1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userChat_1')
+    userChat_2 = models.ForeignKey(User, on_delete=models.CASCADE , related_name='userChat_2')
+    chatMensaje = models.ForeignKey(Mensaje, on_delete=models.CASCADE)
+
+    def __str__ (self):
+        return self.userChat_1.username + ' - ' + self.userChat_2.nombre
