@@ -12,7 +12,7 @@
     <Header>
         <nav class="navbar navbar-expand-md navbar-light" style="background-color:steelblue;">
             <div class="container-fluid">
-              <a class="navbar-brand" href="Index.html">
+              <a class="navbar-brand" href="{% url 'index' %}">
                 <img src="{% static 'img/logoduoc2.png' %}" alt="" width="80" height="">
                 Matcher
               </a>
@@ -26,10 +26,10 @@
                     <a class="nav-link" href="{% url 'index' %}">Inicio</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="PestañaInfo.html#caract">Caracteristicas</a>
+                    <a class="nav-link" href="{% url 'pestañaInfo' %}">Caracteristicas</a>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" href="{% url 'pestañaInfo' %}" role="button" data-bs-toggle="dropdown"
                       aria-expanded="false">
                       Sobre Nosotros
                     </a>

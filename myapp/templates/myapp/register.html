@@ -30,7 +30,7 @@
               <a class="nav-link" href="{% url 'index' %}">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Características</a>
+              <a class="nav-link" href="{% url 'pestañaInfo' %}">Características</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -38,9 +38,9 @@
                 Sobre Nosotros
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Únete a nuestro equipo</a></li>
-                <li><a class="dropdown-item" href="#">Preguntas frecuentes</a></li>
-                <li><a class="dropdown-item" href="#">Contáctanos</a></li>
+                <li><a class="dropdown-item" href="{% url 'pestañaInfo' %}">Únete a nuestro equipo</a></li>
+                <li><a class="dropdown-item" href="{% url 'pestañaInfo' %}">Preguntas frecuentes</a></li>
+                <li><a class="dropdown-item" href="{% url 'pestañaInfo' %}">Contáctanos</a></li>
               </ul>
             </li>
           </ul>

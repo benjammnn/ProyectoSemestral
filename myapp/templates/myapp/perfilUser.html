@@ -43,7 +43,7 @@
           <div class="offcanvas-body" style="background-color: thistle">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'matcher2' %}">Inicio</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Perfil</a>
@@ -57,7 +57,7 @@
                   Opciones
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Historial</a></li>
+                  <li><a class="dropdown-item" href="{% url 'pestañaInfo' %}">Sobre Nosotros</a></li>
                   <li><a class="dropdown-item" href="#">Subscripciones</a></li>
                   <li>
                     <hr class="dropdown-divider">
@@ -90,7 +90,7 @@
             <div class="card-body">
               <div class="form-floating w-50 mx-auto mb-3">
                 <input type="text" class="form-control" name="name" id="name" placeholder="Nombre del estudiante">
-                <label for="name">Nombre:</label>
+                <label for="name">Nombres:</label>
               </div>
               <div class="form-floating w-50 mx-auto mb-3">
                 <input type="text" class="form-control" name="rut" id="id" placeholder="Rut del estudiante">
