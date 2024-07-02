@@ -1,9 +1,8 @@
 from django.db import models
 from django.utils import timezone
 
-
     
-class User(models.Model):
+class Usuario(models.Model):
     GENERO_CHOICES = [
         ('Masculino', 'Masculino'),
         ('Femenino', 'Femenino'),
@@ -24,14 +23,14 @@ class User(models.Model):
     
 class Foto (models.Model):
     
-    usuarioFoto = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuarioFoto = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to='myapp/static/img')
 
     def __str__(self):
         return f'{self.usuarioFoto.nombre} {self.usuarioFoto.apellidos}'
 
 class UsuarioSettings(models.Model):
-    userConfig = models.ForeignKey(User, on_delete=models.CASCADE)
+    userConfig = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     fotoConfig = models.ForeignKey(Foto, on_delete=models.CASCADE)
     foto_perfil = models.ImageField(upload_to='myapp/static/img')
     descripcion = models.TextField()
@@ -42,16 +41,16 @@ class UsuarioSettings(models.Model):
     
 class Match(models.Model):
     
-    userMatch_1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userMatch_1')
-    userMatch_2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userMatch_2')
+    userMatch_1 = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='userMatch_1')
+    userMatch_2 = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='userMatch_2')
     
     def __str__(self):
         return self.UserMatcher_1.nombre + ' - ' + self.UserMatcher_2.nombre
     
 
 class Mensaje(models.Model):
-    userMensaje_1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userMensaje_1')
-    userMensaje_2 = models.ForeignKey(User, on_delete=models.CASCADE , related_name='userMensaje_2')
+    userMensaje_1 = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='userMensaje_1')
+    userMensaje_2 = models.ForeignKey(Usuario, on_delete=models.CASCADE , related_name='userMensaje_2')
     mensaje = models.TextField()
     fecha_mensaje = models.DateTimeField(default=timezone.now)
     
@@ -59,8 +58,8 @@ class Mensaje(models.Model):
         return self.userMensaje_1.nombre + ' - ' + self.userMensaje_2.nombre
 
 class Chat (models.Model):
-    userChat_1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userChat_1')
-    userChat_2 = models.ForeignKey(User, on_delete=models.CASCADE , related_name='userChat_2')
+    userChat_1 = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='userChat_1')
+    userChat_2 = models.ForeignKey(Usuario, on_delete=models.CASCADE , related_name='userChat_2')
     chatMensaje = models.ForeignKey(Mensaje, on_delete=models.CASCADE)
 
     def __str__ (self):

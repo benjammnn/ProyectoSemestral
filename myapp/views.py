@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import User, Foto, UsuarioSettings, Match, Mensaje, Chat
+from .models import Usuario, Foto, UsuarioSettings, Match, Mensaje, Chat
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from .forms import UserForm
 
 # Create your views here.
@@ -27,7 +28,7 @@ def register(request):
         genero = request.POST.get("genero")
         activo = request.POST.get("activo") == "on"
 
-        obj = User.objects.create(
+        obj = Usuario.objects.create(
             nombre=nombre,
             apellidos=apellidos,
             email=email,
@@ -37,6 +38,7 @@ def register(request):
             activo=activo
         )
         obj.save()
+        user = User.objects.create_user(email, email, password)
         context = {
             "mensaje": "Se ha registrado el usuario correctamente",
         }
