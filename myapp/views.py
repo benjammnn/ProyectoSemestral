@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import User, Foto, UsuarioSettings, Match, Mensaje, Chat
+from .models import Usuario, Foto, UsuarioSettings, Match, Mensaje, Chat
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from .forms import UserForm
+from django.utils import timezone
 
 # Create your views here.
 def index(request):
@@ -19,15 +21,22 @@ def register(request):
     if request.method != 'POST':
         return render(request, 'myapp/register.html')
     else:
-        nombre = request.POST.get("nombre")
-        apellidos = request.POST.get("apellidos")
+        nombre = request.POST["nombre"]
+        apellidos = request.POST["apellidos"]
         email = request.POST.get("email")
         password  = request.POST.get("password")
         fecha_nacimiento = request.POST.get("fecha_nacimiento")
         genero = request.POST.get("genero")
         activo = request.POST.get("activo") == "on"
 
-        obj = User.objects.create(
+        #User create
+        
+        user = User.objects.create_user(email,email,password)
+        user.date_joined=timezone.now()
+        user.first_name=nombre
+        user.last_name=apellidos
+        obj = Usuario.objects.create(
+            user=user,
             nombre=nombre,
             apellidos=apellidos,
             email=email,
@@ -37,6 +46,8 @@ def register(request):
             activo=activo
         )
         obj.save()
+
+
         context = {
             "mensaje": "Se ha registrado el usuario correctamente",
         }
