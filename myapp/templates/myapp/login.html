@@ -59,7 +59,7 @@
       </div>
     </div>
         <div class="row" style="width:auto;">
-          <form action="{% url 'login' %}" method="POST" class="form form-active col-md-4 mx-auto shadow-lg text-center mt-5 p-2">
+          <form action="" method="POST" class="form form-active col-md-4 mx-auto shadow-lg text-center mt-5 p-2">
                {% csrf_token %}
             <h2 class="title title-second" style="display: flex; align-items: center; justify-content: center;">Inicio de
             sesión</h2>
@@ -72,13 +72,13 @@
             </p>
             <p>
               <label class="label-input">
-                <input type="password" placeholder="Contraseña" name="pass" id="pass">
+                <input type="password" placeholder="Contraseña" name="password" id="pass">
               </label>
             </p>
-              <a href="{% url 'matcher2' %}">
-              <button  class="btn btn-primary" style="width: 189px; height: 40px;" id="btnLogin">Iniciar
+              
+              <button  type="submit" class="btn btn-primary" style="width: 189px; height: 40px;" id="btnLogin">Iniciar
                 Sesión</button>
-              </a>
+              
               <div id="mensajeError" style="color: red; margin-top: 2em;">
 
               </div>
@@ -92,7 +92,11 @@
         </div>
       </div>
       </div>
-      </div>
+      {% if request.user.is_authenticated %}
+      <h1>CONECTADO</h1>
+      {% else %}
+      <h1>NO CONECTADO</h1>
+      {% endif %}
     </main>
   <footer>
    

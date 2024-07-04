@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Usuario, Foto, UsuarioSettings, Match, Mensaje, Chat
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import UserForm
 from django.utils import timezone
@@ -12,10 +12,34 @@ def index(request):
     }
     return render(request, 'myapp/Index.html', context)
 
-def login(request):
-    return render(request, 'myapp/login.html')
+def loginview(request):
+    if request.method=="POST":
+        username= request.POST.get("user")
+        password = request.POST.get("password")
+        user = authenticate(request,username=username,password=password)
+        if user is not None:
+            login(request,user)
+            usuarios = User.objects.all()
+            context = {
+                "usuarios":usuarios,
+            }
+            return render(request,"myapp/Index.html",context)
+        else:
+            context = {
+                "mensaje":"Usuario o contraseña incorrecta",
+                "design":"alert alert-danger w-50 mx-auto text-center",
+            }
+            return render(request,"myapp/login.html",context)
+    else:
+        context = {
+
+        }
+        return render(request,"myapp/login.html",context)
 
 
+def logout_view(request):
+    logout(request)
+    return redirect('login')
 
 def register(request):
     if request.method != 'POST':

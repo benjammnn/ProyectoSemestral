@@ -1,4 +1,4 @@
-import usuarios from './usuario.js';
+/* import usuarios from './usuario.js';
 
 const button = document.getElementById('btnLogin');
 
@@ -56,4 +56,4 @@ button.addEventListener('click', function(e){
   }
   }
 );
- 
+  */
