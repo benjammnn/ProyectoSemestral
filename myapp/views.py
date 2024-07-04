@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import UserForm
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -77,13 +78,15 @@ def register(request):
         }
         return render(request, 'myapp/login.html', context)
 
-
+@login_required
 def matcher2 (request):
     return render(request, 'myapp/matcher2.html')
 
+@login_required
 def chat(request):
     return render(request, 'myapp/chat.html')
 
+@login_required
 def perfilUser(request):
     return render(request, 'myapp/perfilUser.html')
 
@@ -92,3 +95,30 @@ def pestañaInfo(request):
 
 def recuperaContraseña (request):
     return render(request, 'myapp/recuperaContraseña.html')
+
+@login_required
+def crud(request):
+    usuarios = Usuario.objects.all()
+    context = {
+        "usuarios": usuarios,
+    }
+    return render(request, "myapp/crud.html", context)
+
+def user_del(request, pk):
+    try:
+        usuario = Usuario.objects.get(email=pk)
+        usuario.delete()
+
+        usuarios = Usuario.objects.all()
+        context = {
+            "mensaje": "Registro Eliminado",
+            "usuarios": usuarios,
+        }
+        return render(request, "myapp/crud.html", context)
+    except:
+        usuarios = Usuario.objects.all()
+        context = {
+            "mensaje": "Error,Usuario no encontrado...",
+            "usuarios": usuarios,
+        }
+        return render(request, "myapp/crud.html", context)

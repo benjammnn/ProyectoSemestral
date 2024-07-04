@@ -11,4 +11,6 @@ urlpatterns = [
     path('perfilUser/', views.perfilUser, name='perfilUser'),
     path('pestañaInfo/', views.pestañaInfo, name='pestañaInfo'),
     path('recuperaContraseña/', views.recuperaContraseña, name='recuperaContraseña'),
+    path("crud/", views.crud, name="crud"),
+    path("user_del/<str:pk>", views.user_del, name="user_del"),
 ]
