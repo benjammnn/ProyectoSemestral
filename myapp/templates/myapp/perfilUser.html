@@ -77,90 +77,38 @@
     </nav>
   </header>
   <main>
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <div class="card text-center">
-            <div class="card-header" style="background-color:cornflowerblue; font-weight: bold;">
-              Perfil del usuario
-            </div>
-            <div class="mx-auto mb-3 pt-3">
-              <img src="{% static 'img/pana4.jpg' %}" class="w-25 rounded-circle" alt="">
-            </div>
-            <div class="card-body">
-              <div class="form-floating w-50 mx-auto mb-3">
-                <input type="text" class="form-control" name="name" id="name" placeholder="Nombre del estudiante">
-                <label for="name">Nombres:</label>
-              </div>
-              <div class="form-floating w-50 mx-auto mb-3">
-                <input type="text" class="form-control" name="rut" id="id" placeholder="Rut del estudiante">
-                <label for="rut">Rut:</label>
-              </div>
-              <div class="form-floating w-50 mx-auto mb-3">
-                <input type="text" class="form-control" name="carrera" id="carrera"
-                  placeholder="Carrera del estudiante">
-                <label for="carrera">Carrera:</label>
-              </div>
-              <div class="form-floating w-50 mx-auto mb-3">
-                <select class="form-select" name="optNvlEst" id="optNvlEst">
-                  <option value="" selected>Nivel de estudio</option>
-                  <option value="Semestre 1">Semestre 1</option>
-                  <option value="Semestre 2">Semestre 2</option>
-                  <option value="Semestre 3">Semestre 3</option>
-                  <option value="Semestre 4">Semestre 4</option>
-                  <option value="Semestre 5">Semestre 5</option>
-                  <option value="Semestre 6">Semestre 6</option>
-                  <option value="Semestre 7">Semestre 7</option>
-                  <option value="Semestre 8">Semestre 8</option>
-                </select>
-                <label for="optNvlEst">Rol:</label>
-              </div>
-              <div class="form-floating w-50 mx-auto mb-3">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email del estudiante">
-                <label for="email">Email:</label>
-              </div>
-              <div class="form-floating w-50 mx-auto mb-3">
-                <input type="password" class="form-control" name=" pass" id="pass"
-                  placeholder="Contraseña del estudiante">
-                <label for="pass">Contraseña:</label>
-              </div>
-              <div class="form-floating w-50 mx-auto mb-3">
-                <input type="date" class="form-control" id="txtFecnac" name="txtFecnac"
-                  placeholder="Fecha de Nacimiento" required>
-                <label for="txtFecnac">Fecha de Nacimiento</label>
-              </div>
-              <div class="row">
-                <div class="col-12 mb-2">
-                  <label for="">Seleccione su genero</label>
-                </div>
-                <div class="col mb-3">
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" value="Masculino" name="optGenero" id="optGenero1">
-                    <label class="form-check-label" for="optGenero1">
-                      Masculino
-                    </label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" value="Femenino" name="optGenero" id="optGenero2">
-                    <label class="form-check-label" for="optGenero2">
-                      Femenino
-                    </label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" value="Otro" name="optGenero" id="optGenero3">
-                    <label class="form-check-label" for="optGenero3">
-                      Otro
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer text-body-secondary">
-                aqui van los botones guardar y cancelar
-              </div>
-            </div>
+    <div class="container">
+      <div class="row">
+          <div class="col-md-8 shadow-lg mx-auto text-center p-3">
+              <h2>Modificar Usuario</h2>
+              <form method="post">
+                  {% csrf_token %}
+                  <label for="nombre">Nombre:</label>
+                  <input type="text" name="nombre" id="nombres" value="{{ nombre }}"><br>
+
+                  <label for="apellidos">Apellidos:</label>
+                  <input type="text" name="apellidos" id="Appat" value="{{ apellidos }}"><br>
+
+                  <label for="email">Email:</label>
+                  <input type="email" name="email" id="mail" value="{{ email }}"><br>
+
+                  <label for="password">Contraseña:</label>
+                  <input type="password" name="password" id="password"><br>
+
+                  <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+                  <input type="date" name="fecha_nacimiento" id="birthDate" value="{{ fecha_nacimiento }}"><br>
+
+                  <label for="genero">Género:</label>
+                  <input type="text" name="genero" id="genero" value="{{ genero }}"><br>
+
+                  <label for="activo">Activo:</label>
+                  <input type="checkbox" name="activo" id="activo" {% if activo %}checked{% endif %}><br>
+
+                  <button type="submit">Modificar</button>
+              </form>
           </div>
-        </div>
       </div>
+    </div>
   </main>
 
 </body>

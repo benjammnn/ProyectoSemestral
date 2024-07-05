@@ -86,7 +86,7 @@ def matcher2 (request):
 def chat(request):
     return render(request, 'myapp/chat.html')
 
-@login_required
+
 def perfilUser(request):
     return render(request, 'myapp/perfilUser.html')
 
@@ -122,3 +122,61 @@ def user_del(request, pk):
             "usuarios": usuarios,
         }
         return render(request, "myapp/crud.html", context)
+
+
+
+def user_findEdit(request,pk):
+    if pk!="":
+        """ 
+            objects.get() = Obtener datos con filtro
+            objects.all() = Obtener todos
+        """
+        usuario = Usuario.objects.get(email=pk)
+
+        context={
+            "usuario":usuario,
+        }
+        return render(request,"myapp/perfilUser.html",context)
+    else:
+        usuarios = Usuario.objects.all()
+        context={
+            "mensaje":"Error,Email no encontrado",
+            "usuarios":usuarios
+        }
+        return render(request,"myapp/crud.html",context)
+
+
+@login_required  
+def perfiluser(request):
+    if request.method=="POST":
+        """ 
+            Capturo todos los datos del front
+            Identificamos
+            Asignamos nombre 
+        """
+        nombre = request.POST["nombre"]
+        apellidos = request.POST["apellidos"]
+        email = request.POST["email"]
+        password  = request.POST["password"]
+        fecha_nacimiento = request.POST["fecha_nacimiento"]
+        genero = request.POST["genero"]
+        activo = True
+
+        """ Genero la instancia """
+
+        obj = Usuario(
+            nombre=nombre,
+            apellidos=apellidos,
+            email=email,
+            password=password,
+            fecha_nacimiento=fecha_nacimiento,
+            genero=genero,
+            activo=activo
+        )
+        obj.save()
+
+        context = {
+            "mensaje": "Modificado con Exito",
+            "usuario":obj,
+        }
+        return render(request, "myapp/perfilUser.html", context)

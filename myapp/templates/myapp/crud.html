@@ -36,6 +36,7 @@
                             <th>Apellido</th>
                             <th>Email</th>
                             
+                            <th>Modificar
                             <th>Eliminar</th>
                         </thead>
                         <tbody>
@@ -47,6 +48,10 @@
                                 <td>{{tmp.apellidos}}</td>
                                 <td>{{tmp.email}}</td>
                                 
+                                <td><a href="{% url 'user_findEdit' pk=tmp.email%}"><button
+                                    class="btn btn-warning">Modificar</button></a></td>
+
+
                                 <td><a href="{% url 'user_del' pk=tmp.email%}"><button
                                             class="btn btn-danger">Eliminar</button></a></td>
                             </tr>
