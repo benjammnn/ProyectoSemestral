@@ -154,7 +154,7 @@ def perfiluser(request):
             Identificamos
             Asignamos nombre 
         """
-        nombre = request.POST["nombre"]
+        nombre = Usuario.objects.get(nombre)
         apellidos = request.POST["apellidos"]
         email = request.POST["email"]
         password  = request.POST["password"]
