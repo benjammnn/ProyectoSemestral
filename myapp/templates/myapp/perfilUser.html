@@ -77,54 +77,61 @@
     </nav>
   </header>
   <main>
-    <div class="container">
+    <div class="container p-5">
       <div class="row">
           <div class="col-md-8 shadow-lg mx-auto text-center p-3">
-              <h2>Modificar Usuario</h2>
-              <form action="{% url 'perfilUser' %}" method="POST" class="form-floating">
+            <h2 class="my-3">Modificar Usuario</h2>
+              <form method="POST" action="{% url 'perfilUser' %}" class="form-floating">
                   {% csrf_token %}
                   <div class="form-floating mb-3 w-50 mx-auto">
-                  <label for="nombre">Nombre:</label>
-                  <input type="text" value="{{ nombre }}" class="form-label name="nombre" id="nombres" "><br>
-                </div>
+                    <input type="text" value="{{ usuario.nombre }}" class= "form-control" name="nombre" id="nombres">
+                    <label for="nombre" class="form-label" >Nombre:</label>
+                  </div>
                 
                   <div class="form-floating mb-3 w-50 mx-auto">
-                  <label for="apellidos">Apellidos:</label>
-                  <input type="text" name="apellidos" id="Appat" value="{{ apellidos }}"><br>
-                </div>
+                    <input type="text" value="{{ usuario.apellidos }}" class= "form-control" name="apellidos" id="Appat" >
+                    <label for="apellidos" class="form-label">Apellidos:</label>
+                  </div>
 
                   <div class="form-floating mb-3 w-50 mx-auto">
-                  <label for="email">Email:</label>
-                  <input type="email" name="email" id="mail" value="{{ email }}"><br>
-                </div>
+                    <input type="email" value="{{ usuario.email }}" class= "form-control" name="email" id="mail">
+                    <label for="email" class= "form-label">Email:</label>
+                  </div>
 
                   <div class="form-floating mb-3 w-50 mx-auto">
-                  <label for="password">Contraseña:</label>
-                  <input type="password" name="password" id="password"><br>
-                </div>
+                    <input type="password" class= "form-control" name="password" id="password">
+                    <label for="password" class= "form-label">Contraseña:</label>
+                  </div>
 
                   <div class="form-floating mb-3 w-50 mx-auto">
-                  <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-                  <input type="date" name="fecha_nacimiento" id="birthDate" value="{{ fecha_nacimiento }}"><br>
-                </div>
+                    <input type="date" value="{{ usuario.fecha_nacimiento }}" class= "form-control" name="fecha_nacimiento" id="birthDate" >
+                    <label for="fecha_nacimiento" class= "form-label">Fecha de Nacimiento:</label>
+                  </div>
 
                   <div class="form-floating mb-3 w-50 mx-auto">
-                  <label for="genero">Género:</label>
-                  <input type="text" name="genero" id="genero" value="{{ genero }}"><br>
-                </div>
-
+                    <input type="text" value="{{ usuario.genero }}" class= "form-control" name="genero" id="genero">
+                    <label for="genero" class= "form-label">Género:</label>
+                  </div>
+                  <!--
                   <div class="form-floating mb-3 w-50 mx-auto">
-                  <label for="activo">Activo:</label>
-                  <input type="checkbox" name="activo" id="activo" {% if activo %}checked{% endif %}><br>
-                </div>
-
-                  <button type="submit">Modificar</button>
+                    <input type="checkbox" class= "form-select" name="activo" id="activo" {% if usuario.activo %}checked{% endif %}>
+                    <label for="activo" class= "form-label">Activo:</label>
+                  </div>
+                  -->
+                  {% if mensaje %}
+                  <div class="alert alert-success w-50 mx-auto">
+                    {{mensaje}}
+                  </div>
+                  {% endif %}
+                  <div>
+                      <button type="submit" class="btn btn-warning">Modificar Registro</button><br>
+                      <a href="{% url 'crud' %}"><button type="button"
+                              class="btn btn-primary mt-3">Volver</button></a>
+                  </div>
               </form>
           </div>
       </div>
     </div>
   </main>
-
 </body>
-
 </html>

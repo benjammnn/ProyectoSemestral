@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from .forms import UserForm
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 def index(request):
@@ -87,9 +88,6 @@ def chat(request):
     return render(request, 'myapp/chat.html')
 
 
-def perfilUser(request):
-    return render(request, 'myapp/perfilUser.html')
-
 def pestañaInfo(request):
     return render(request, 'myapp/pestañaInfo.html')
 
@@ -125,58 +123,76 @@ def user_del(request, pk):
 
 
 
-def user_findEdit(request,pk):
-    if pk!="":
-        """ 
-            objects.get() = Obtener datos con filtro
-            objects.all() = Obtener todos
-        """
+def user_findEdit(request, pk):
+    try:
         usuario = Usuario.objects.get(email=pk)
-
-        context={
-            "usuario":usuario,
+        context = {
+            "usuario": usuario,
         }
-        return render(request,"myapp/perfilUser.html",context)
-    else:
+        return render(request, "myapp/perfilUser.html", context)
+    except Usuario.DoesNotExist:
         usuarios = Usuario.objects.all()
-        context={
-            "mensaje":"Error,Email no encontrado",
-            "usuarios":usuarios
+        context = {
+            "mensaje": "Error, Email no encontrado",
+            "usuarios": usuarios
         }
-        return render(request,"myapp/crud.html",context)
+        return render(request, "myapp/crud.html", context)
 
 
 @login_required  
-def perfiluser(request):
-    if request.method=="POST":
-        """ 
-            Capturo todos los datos del front
-            Identificamos
-            Asignamos nombre 
-        """
-        nombre = Usuario.objects.get(nombre)
-        apellidos = request.POST["apellidos"]
-        email = request.POST["email"]
-        password  = request.POST["password"]
-        fecha_nacimiento = request.POST["fecha_nacimiento"]
-        genero = request.POST["genero"]
+def perfilUser(request):
+    user = request.user
+
+    try:
+        usuario = Usuario.objects.get(user=user)
+    except ObjectDoesNotExist:
+        usuario = Usuario(user=user)
+
+    if request.method == "POST":
+        nombre = request.POST.get("nombre")
+        apellidos = request.POST.get("apellidos")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        fecha_nacimiento = request.POST.get("fecha_nacimiento")
+        genero = request.POST.get("genero")
         activo = True
 
-        """ Genero la instancia """
+        print("Datos recibidos del formulario:")
+        print(f"Nombre: {nombre}")
+        print(f"Apellidos: {apellidos}")
+        print(f"Email: {email}")
+        print(f"Password: {password}")
+        print(f"Fecha de nacimiento: {fecha_nacimiento}")
+        print(f"Género: {genero}")
 
-        obj = Usuario(
-            nombre=nombre,
-            apellidos=apellidos,
-            email=email,
-            password=password,
-            fecha_nacimiento=fecha_nacimiento,
-            genero=genero,
-            activo=activo
-        )
-        obj.save()
+
+        # Actualizar el usuario de Django
+        user.first_name = nombre
+        user.last_name = apellidos
+        user.email = email
+        if password:
+            user.set_password(password)
+        user.save()
+
+         # Actualizar el perfil de Usuario
+        usuario.nombre = nombre
+        usuario.apellidos = apellidos
+        usuario.email = email
+        if password:
+            usuario.password = password  # Considera si quieres almacenar las contraseñas así
+        usuario.fecha_nacimiento = fecha_nacimiento
+        usuario.genero = genero
+        usuario.activo = activo
+        usuario.save()
 
         context = {
-            "mensaje": "Modificado con Exito",
-            "usuario":obj,
+            "mensaje": "Modificado con Éxito",
+            "usuario": usuario,
+        }
+        return render(request, "myapp/perfilUser.html", context)
+
+    else:
+        context = {
+            "usuario": usuario,
         }
         return render(request, "myapp/perfilUser.html", context)
