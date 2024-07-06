@@ -9,7 +9,7 @@ $(document).ready(function () {
     let email = $("#mail");
     let password = $("#password");
     let birthDate = $("#birthDate");
-    let gender = $("input[name='gender']:checked");
+  
 
     let valid = true;
 
@@ -18,7 +18,7 @@ $(document).ready(function () {
     valid &= validarEmail(email, errorMessages);
     valid &= validarContraseña(password, errorMessages);
     valid &= validarFechaNacimiento(birthDate, errorMessages);
-    valid &= validarGenero(gender, errorMessages);
+   
 
     if (valid) {
       window.location.href = "";
@@ -28,13 +28,7 @@ $(document).ready(function () {
   });
 });
 
-function validarCampoNoVacio(campo, nombreCampo, mensajesError) {
-  if (campo.val().trim() === "") {
-    mensajesError.append(`<p>El campo ${nombreCampo} es obligatorio.</p>`);
-    return false;
-  }
-  return true;
-}
+
 
 function validarEmail(email, mensajesError) {
   let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -105,10 +99,3 @@ function validarFechaNacimiento(birthDate, mensajesError) {
   return true;
 }
 
-function validarGenero(gender, mensajesError) {
-  if (!gender.length) {
-    mensajesError.append("<p>El campo Sexo es obligatorio.</p>");
-    return false;
-  }
-  return true;
-}
