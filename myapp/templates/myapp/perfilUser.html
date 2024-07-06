@@ -30,11 +30,13 @@
           <img src="{% static 'img/logoduoc2.png' %}" alt="" width="80" height="">
           Matcher
         </a>
+        
         <button class="navbar-toggler ms-auto pd-3" type="button" data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation"
           style="background-color: thistle;">
           <span class="navbar-toggler-icon"></span>
         </button>
+        
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header" style="background-color:cadetblue;">
             <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="font-size: 20px; font-weight:bold;">Menu</h5>
@@ -49,7 +51,7 @@
                 <a class="nav-link" href="#">Perfil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'chat' %}">Matches</a>
+                <a class="nav-link" href="{% url 'chat' %}">Chat</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -66,11 +68,6 @@
                 </ul>
               </li>
             </ul>
-            <form class="d-flex mt-3" role="search">
-              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit"
-                style="color: black; background-color:steelblue;">Buscar</button>
-            </form>
           </div>
         </div>
       </div>
@@ -80,7 +77,7 @@
     <div class="container p-5">
       <div class="row">
           <div class="col-md-8 shadow-lg mx-auto text-center p-3">
-            <h2 class="my-3">Modificar Usuario</h2>
+            <h2 class="my-3">Perfil</h2>
               <form method="POST" action="{% url 'perfilUser' %}" class="form-floating">
                   {% csrf_token %}
                   <div class="form-floating mb-3 w-50 mx-auto">
@@ -104,7 +101,7 @@
                   </div>
 
                   <div class="form-floating mb-3 w-50 mx-auto">
-                    <input type="date" value="{{ usuario.fecha_nacimiento }}" class= "form-control" name="fecha_nacimiento" id="birthDate">
+                    <input type="date" value={{usuario.fecha_nacimiento|date:"Y-m-d"}} class="form-control"id="fecha" name="fecha">
                     <label for="fecha_nacimiento" class= "form-label">Fecha de Nacimiento:</label>
                   </div>
 
@@ -127,6 +124,34 @@
                       <button type="submit" class="btn btn-warning">Modificar Registro</button><br>
                       <a href="{% url 'crud' %}"><button type="button"
                               class="btn btn-primary mt-3">Volver</button></a>
+
+                  </div>
+                  <div class="container text-lg-end " >
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Cerrar sesión
+                    </button>
+          
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body d-flex justify-content-center">
+                            ¿Estás seguro de cerrar tú sesión?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                            <a href="{% url 'logout' %}" class="ms-auto pe-3">
+                              <button type="button" class="btn btn-primary">Cerrar sesión</button>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
               </form>
           </div>

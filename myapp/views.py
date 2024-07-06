@@ -15,28 +15,27 @@ def index(request):
     return render(request, 'myapp/Index.html', context)
 
 def loginview(request):
-    if request.method=="POST":
-        username= request.POST.get("user")
+    if request.method == "POST":
+        username = request.POST.get("user")
         password = request.POST.get("password")
-        user = authenticate(request,username=username,password=password)
+        user = authenticate(request, username=username, password=password)
         if user is not None:
-            login(request,user)
-            usuarios = User.objects.all()
+            login(request, user)
+            # Obtener el objeto Usuario asociado al usuario autenticado
+            usuario = get_object_or_404(Usuario, user=user)
             context = {
-                "usuarios":usuarios,
+                "usuario": usuario,
             }
-            return render(request,"myapp/Index.html",context)
+            return render(request, "myapp/perfilUser.html", context)
         else:
             context = {
-                "mensaje":"Usuario o contraseña incorrecta",
-                "design":"alert alert-danger w-50 mx-auto text-center",
+                "mensaje": "Usuario o contraseña incorrecta",
+                "design": "alert alert-danger w-50 mx-auto text-center",
             }
-            return render(request,"myapp/login.html",context)
+            return render(request, "myapp/login.html", context)
     else:
-        context = {
-
-        }
-        return render(request,"myapp/login.html",context)
+        context = {}
+        return render(request, "myapp/login.html", context)
 
 
 def logout_view(request):
