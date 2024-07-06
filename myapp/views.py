@@ -196,3 +196,13 @@ def perfilUser(request):
             "usuario": usuario,
         }
         return render(request, "myapp/perfilUser.html", context)
+
+@login_required    
+def perfilMatch(request):
+    usuario = get_object_or_404(Usuario, email=request.user.email)
+
+    context = {
+        'usuario': usuario,
+    }
+
+    return render(request, 'myapp/perfilMatch.html', context)
