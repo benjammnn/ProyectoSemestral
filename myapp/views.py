@@ -4,16 +4,22 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import UserForm
 from django.utils import timezone
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.exceptions import ObjectDoesNotExist
 
+
 # Create your views here.
+def unauthenticated_user(user):
+    return not user.is_authenticated
+
 def index(request):
     context = {
         "user": "",
     }
     return render(request, 'myapp/Index.html', context)
 
+
+@user_passes_test(unauthenticated_user, login_url='index')
 def loginview(request):
     if request.method == "POST":
         username = request.POST.get("user")
@@ -42,6 +48,7 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
+@user_passes_test(unauthenticated_user, login_url='index')
 def register(request):
     if request.method != 'POST':
         return render(request, 'myapp/register.html')
@@ -168,7 +175,6 @@ def perfilUser(request):
         # Actualizar el usuario de Django
         user.first_name = nombre
         user.last_name = apellidos
-        user.email = email
         if password:
             user.set_password(password)
         user.save()
@@ -176,7 +182,6 @@ def perfilUser(request):
          # Actualizar el perfil de Usuario
         usuario.nombre = nombre
         usuario.apellidos = apellidos
-        usuario.email = email
         if password:
             usuario.password = password  # Considera si quieres almacenar las contraseñas así
         usuario.fecha_nacimiento = fecha_nacimiento

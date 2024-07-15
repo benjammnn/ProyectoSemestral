@@ -11,6 +11,7 @@
         body {
             background-image: url("{% static 'img/fondo-bienvenidos.jpg' %}");
         }
+
         .card-img-top {
             height: 300px;
             width: 100%;
@@ -71,32 +72,25 @@
         .imagenhoverNo img#imgButtonNoDark {
             opacity: 1;
         }
+
     </style>
 
 </head>
 
 <body>
-    <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'jquery/jquery-3.7.1.min.js' %}"></script>
     <header>
         <nav class="navbar fixed-top" style="background-color: steelblue">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'index' %}">
-                    <img src="{% static  'myapp/img/logoduoc2.png' %}" alt="" width="80" height="" />
+                    <img src="{% static 'img/logoduoc2.png' %}" alt="" width="80" height="" />
                     Matcher
                 </a>
-                <button class="navbar-toggler ms-auto pd-3" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation"
-                    style="background-color: thistle">
+                <button class="navbar-toggler ms-auto pd-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="background-color: thistle">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                    aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header" style="background-color: cadetblue">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"
-                            style="font-size: 20px; font-weight: bold">
-                            Menu
-                        </h5>
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="font-size: 20px; font-weight: bold">Menu</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body" style="background-color: thistle">
@@ -111,67 +105,58 @@
                                 <a class="nav-link" href="{% url 'chat' %}">Chat</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Opciones
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Historial</a></li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Subscripciones</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Configuraciones</a>
-                                    </li>
+                                    <li><a class="dropdown-item" href="#">Subscripciones</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><a class="dropdown-item" href="#">Configuraciones</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <div class="container text-lg-end">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                                        Cerrar sesión
+                                    </button>
+                                </div>
+                            </li>
                         </ul>
-                    
                     </div>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container text-lg-end " >
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Cerrar sesión
-        </button>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog">
+    <!-- Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body d-flex justify-content-center">
-                ¿Estás seguro de cerrar tú sesión?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                <a href="{% url 'logout' %}" class="ms-auto pe-3">
-                  <button type="button" class="btn btn-primary">Cerrar sesión</button>
-                </a>
-              </div>
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Confirmación</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    ¿Estás seguro de cerrar tu sesión?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <a href="{% url 'logout' %}" class="ms-auto pe-3">
+                        <button type="button" class="btn btn-primary">Cerrar sesión</button>
+                    </a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+
     <div class="container d-flex justify-content-center align-items-center mt-5" style="height: 100vh;">
         <div class="card" style="width: 30rem; height: 40rem;">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                        class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -184,42 +169,37 @@
                         <img src="" class="d-block w-100 card-img-top" alt="..." id="img3">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
             <div class="card-body" style="height: 300px;">
-                <h5 class="card-title d-flex justify-content-center"><span id="userName"></span>,&nbsp;<span
-                        id="userAge">
-                    </span></h5>
+                <h5 class="card-title d-flex justify-content-center"><span id="userName"></span>,&nbsp;<span id="userAge"></span></h5>
                 <p class="card-text d-flex justify-content-center m-3">Género: &nbsp; <span id="userGnre"></span></p>
                 <p class="card-text d-flex justify-content-center">Carrera: &nbsp;<span id="userCarrera"></span></p>
                 <p class="card-text d-flex justify-content-center">Intereses: &nbsp; <span id="userInteres"></span></p>
                 <div class="btn-group image-container d-inline-flex" style="gap:170px;">
                     <div class="imagenhoverNo" style="margin-left: 1em;">
-                        <img class="m-4" src="{% static 'myapp/img/No_darkened(1).png' %}" id="imgButtonNoDark" alt="">
-                        <img class="m-4" src="{% static 'myapp/img/No.png' %}" id="imgButtonNo" alt="">
+                        <img class="m-4" src="{% static 'img/No_darkened(1).png' %}" id="imgButtonNoDark" alt="">
+                        <img class="m-4" src="{% static 'img/No.png' %}" id="imgButtonNo" alt="">
                     </div>
                     <div class="imagenhoverSi" style="margin-left: 3em;">
-                        <img class="m-4" src="{% static 'myapp/img/Sí_darkened.png' %}" id="imgButtonSiDark" alt="">
-                        <img class="m-4" src="{% static 'myapp/img/Sí.png' %}" alt="" id="imgButtonSi">
-                    </div>x
-
-
-
+                        <img class="m-4" src="{% static 'img/Sí_darkened.png' %}" id="imgButtonSiDark" alt="">
+                        <img class="m-4" src="{% static 'img/Sí.png' %}" alt="" id="imgButtonSi">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <script>
 
+    <script src="{% static 'jquery/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
             let userBenjamin = {
                 name: 'Benjamin Arevalo Onneto',
@@ -227,9 +207,9 @@
                 genero: 'Masculino',
                 carrera: 'Ingienería Informática',
                 interes: 'Bebidas Energéticas',
-                img1: '{% static "myapp/img/pana1.jpg" %}',
-                img2: '{% static "myapp/img/pana2.jpg" %}',
-                img3: '{% static "myapp/img/pana3.jpg" %}'
+                img1: '{% static "img/pana1.jpg" %}',
+                img2: '{% static "img/pana2.jpg" %}',
+                img3: '{% static "img/pana3.jpg" %}'
             }
             let userMaximiliano = {
                 name: 'Maximiliano Reszczynski',
@@ -237,9 +217,9 @@
                 genero: 'Masculino',
                 carrera: 'Ingienería Informática',
                 interes: 'Ver peliculas',
-                img1: '{% static "myapp/img/fondo-bienvenidos.jpg" %}',
-                img2: '{% static "myapp/img/emojibackgorudn.jpg" %}',
-                img3: '{% static "myapp/img/alumnos-duoc-960x600.jpg" %}'
+                img1: '{% static "img/fondo-bienvenidos.jpg" %}',
+                img2: '{% static "img/emojibackgorudn.jpg" %}',
+                img3: '{% static "img/alumnos-duoc-960x600.jpg" %}'
             }
 
             let userElias = {
@@ -248,9 +228,9 @@
                 'genero': 'Masculino',
                 'carrera': 'Ingeniería Informática',
                 'interes': 'GYM Bro',
-                'img1': '{% static "myapp/img/pana1.jpg" %}',
-                'img2': '{% static "myapp/img/pana2.jpg" %}',
-                'img3': '{% static "myapp/img/pana3.jpg" %}'
+                'img1': '{% static "img/pana1.jpg" %}',
+                'img2': '{% static "img/pana2.jpg" %}',
+                'img3': '{% static "img/pana3.jpg" %}'
             }
             let currentUser = userBenjamin
 
@@ -288,7 +268,6 @@
 
         });
     </script>
-
 </body>
 
 </html>
