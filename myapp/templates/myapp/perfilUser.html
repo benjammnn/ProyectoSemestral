@@ -48,7 +48,7 @@
                 <a class="nav-link active" aria-current="page" href="{% url 'matcher2' %}">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Perfil</a>
+                <a class="nav-link" href="{% url 'perfilMatch' %}">Perfil</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'chat' %}">Chat</a>
@@ -80,6 +80,7 @@
             <h2 class="my-3">Perfil</h2>
               <form method="POST" action="{% url 'perfilUser' %}" class="form-floating">
                   {% csrf_token %}
+
                   <div class="form-floating mb-3 w-50 mx-auto">
                     <input type="text" value="{{ usuario.nombre }}" class= "form-control" name="nombre" id="nombres">
                     <label for="nombre" class="form-label" >Nombre:</label>
@@ -89,14 +90,20 @@
                     <input type="text" value="{{ usuario.apellidos }}" class= "form-control" name="apellidos" id="Appat" >
                     <label for="apellidos" class="form-label">Apellidos:</label>
                   </div>
+
                   <div class="form-floating mb-3 w-50 mx-auto">
-                    <input type="password" class= "form-control" name="password" id="password">
-                    <label for="password" class= "form-label">Contraseña:</label>
+                    <input type="email" value="{{ usuario.email }}" class= "form-control" name="email" id="mail" readonly>
+                    <label for="email" class= "form-label">Email:</label>
                   </div>
 
                   <div class="form-floating mb-3 w-50 mx-auto">
-                    <input type="date" value="{{ usuario.fecha_nacimiento }}" class="form-control"id="fecha" name="fecha_nacimiento">
-                    <label for="fecha_nacimiento" class= "form-label">Fecha de Nacimiento:</label>
+                    <input type="password" class= "form-control" name="password" id="password">
+                    <label for="password" class= "form-label">Ingrese su contraseña o modifique:</label>
+                  </div>
+
+                  <div class="form-floating mb-3 w-50 mx-auto">
+                    <input type="date" value="{{ usuario.fecha_nacimiento|date:'Y-m-d' }}" class="form-control" name="fecha_nacimiento" id="fecha" readonly>
+                    <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento:</label>
                   </div>
 
                   <div class="form-floating mb-3 w-50 mx-auto">

@@ -17,6 +17,27 @@
       display: inline-block;
       margin-top: 100px;
     }
+
+    .form-floating-plaintext {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-floating-plaintext label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-floating-plaintext p {
+      background-color: #f8f9fa;
+      border: 1px solid #ced4da;
+      border-radius: .375rem;
+      padding: .375rem .75rem;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 
@@ -46,7 +67,7 @@
                 <a class="nav-link active" aria-current="page" href="{% url 'matcher2' %}">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'perfilUser' %}">Perfil</a>
+                <a class="nav-link" href="{% url 'perfilMatch' %}">Perfil</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'chat' %}">Matches</a>
@@ -81,29 +102,29 @@
       <div class="row">
           <div class="col-md-8 shadow-lg mx-auto text-center p-3">
             <h2 class="my-3">Perfil de Usuario</h2>
-              <div class="form-floating mb-3 w-50 mx-auto">
-                <p class="form-control-plaintext" id="nombres">{{ usuario.nombre }}</p>
+              <div class="form-floating-plaintext mb-3 w-50 mx-auto">
                 <label for="nombres" class="form-label">Nombre:</label>
+                <p id="nombres">{{ usuario.nombre }}</p>
               </div>
             
-              <div class="form-floating mb-3 w-50 mx-auto">
-                <p class="form-control-plaintext" id="apellidos">{{ usuario.apellidos }}</p>
+              <div class="form-floating-plaintext mb-3 w-50 mx-auto">
                 <label for="apellidos" class="form-label">Apellidos:</label>
+                <p id="apellidos">{{ usuario.apellidos }}</p>
               </div>
 
-              <div class="form-floating mb-3 w-50 mx-auto">
-                <p class="form-control-plaintext" id="mail">{{ usuario.email }}</p>
+              <div class="form-floating-plaintext mb-3 w-50 mx-auto">
                 <label for="mail" class="form-label">Email:</label>
+                <p id="mail">{{ usuario.email }}</p>
               </div>
 
-              <div class="form-floating mb-3 w-50 mx-auto">
-                <p class="form-control-plaintext" id="birthDate">{{ usuario.fecha_nacimiento }}</p>
+              <div class="form-floating-plaintext mb-3 w-50 mx-auto">
                 <label for="birthDate" class="form-label">Fecha de Nacimiento:</label>
+                <p id="birthDate">{{ usuario.fecha_nacimiento }}</p>
               </div>
 
-              <div class="form-floating mb-3 w-50 mx-auto">
-                <p class="form-control-plaintext" id="genero">{{ usuario.genero }}</p>
+              <div class="form-floating-plaintext mb-3 w-50 mx-auto">
                 <label for="genero" class="form-label">Género:</label>
+                <p id="genero">{{ usuario.genero }}</p>
               </div>
 
               {% if mensaje %}
