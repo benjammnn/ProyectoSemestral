@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Usuario, Foto, UsuarioSettings, Match, Mensaje, Chat
+from .models import Usuario, Foto, UsuarioSettings, Match, Mensaje, Chat, Like
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import UserForm
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.utils.decorators import method_decorator
+import json
 
 
 # Create your views here.
@@ -86,13 +90,6 @@ def register(request):
         return render(request, 'myapp/login.html', context)
 
 @login_required
-def matcher2 (request):
-    return render(request, 'myapp/matcher2.html')
-
-@login_required
-def chat(request):
-    return render(request, 'myapp/chat.html')
-
 
 def pestañaInfo(request):
     return render(request, 'myapp/pestañaInfo.html')
@@ -210,3 +207,25 @@ def perfilMatch(request):
     }
 
     return render(request, 'myapp/perfilMatch.html', context)
+
+def matcher2(request):
+    users= Usuario.objects.exclude(email=request.user.email)
+    return render(request, 'myapp/matcher2.html', {'users': users})
+
+@login_required
+@require_POST
+def like_user(request, user_email):
+    liked_user = get_object_or_404(Usuario, email=user_email)
+    action = json.loads(request.body).get('action')
+
+    if action == 'like':
+        Like.objects.get_or_create(liker=request.user.usuario, liked=liked_user)
+    # No es necesario guardar 'dislike' en la base de datos, a menos que lo quieras hacer.
+
+    return JsonResponse({'status': 'ok'})
+
+def chat(request):
+    user = request.user.usuario
+    matches = Usuario.objects.filter(liked_users=user, liked_by=user)
+    return render(request, 'myapp/chat.html', {'matches': matches})
+

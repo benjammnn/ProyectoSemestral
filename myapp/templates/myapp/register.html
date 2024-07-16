@@ -55,7 +55,7 @@
   <main>
     <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;">
       <div class="row" style="width:auto;">
-        <form id="formulario" action="{% url 'register'%}" method="POST"
+        <form id="formulario" action="{% url 'register' %}" method="POST"
           class="form form-active col-md-12 mx-auto shadow-lg text-center p-4">
           {% csrf_token %}
           <h2 class="title title-second" style="display: flex; align-items: center; justify-content: center;">Registro
@@ -110,7 +110,9 @@
 
               </p>
               <br>
-              <button type="submit" class="btn btn-primary" style="width: 189px; height: 40px;">Registrarse</button>
+              
+                <button type="submit" class="btn btn-primary" style="width: 189px; height: 40px;">Registrarse</button>
+              
             </div>
           </div>
         </form>

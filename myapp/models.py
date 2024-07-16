@@ -18,10 +18,19 @@ class Usuario(models.Model):
     fecha_nacimiento = models.DateField()
     genero = models.CharField(max_length=10, choices=GENERO_CHOICES)
     activo = models.BooleanField(default=True)
+    liked_users = models.ManyToManyField('self', through='Like', symmetrical=False, related_name='liked_by')
 
     def __str__(self):
         return f'{self.nombre} {self.apellidos}'
-    
+
+class Like(models.Model):
+    liker = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='liker')
+    liked = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='liked')
+    timestano = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('liker', 'liked')
+
 class Foto (models.Model):
     
     usuarioFoto = models.ForeignKey(Usuario, on_delete=models.CASCADE)
