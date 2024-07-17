@@ -57,6 +57,7 @@ def register(request):
     if request.method != 'POST':
         return render(request, 'myapp/register.html')
     else:
+        
         nombre = request.POST["nombre"]
         apellidos = request.POST["apellidos"]
         email = request.POST.get("email")

@@ -170,7 +170,7 @@
                             {% if user.foto %}
                             <img src="{{ user.foto.url }}" class="d-block w-100 card-img-top" alt="{{ user.nombre }}" style="object-fit: cover;">
                             {% else %}
-                            <img src="{% static 'img/userPhoto.png' %}" alt="">
+                            <img src="{% static 'img/userPhoto.jpg' %}" class="d-block w-100 card-img-top" alt="{{ user.nombre }}" style="object-fit: cover;">
                             {% endif %}
                         </div>
                         <!-- Add more images if available -->

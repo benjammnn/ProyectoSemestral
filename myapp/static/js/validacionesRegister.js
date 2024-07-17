@@ -19,8 +19,10 @@ $(document).ready(function () {
     valid &= validarContraseña(password, errorMessages);
     valid &= validarFechaNacimiento(birthDate, errorMessages);
 
+
+      
     if (valid) {
-      window.location.href = "";
+      windows.location.href = "";
     } else {
       errorMessages.show();
     }
