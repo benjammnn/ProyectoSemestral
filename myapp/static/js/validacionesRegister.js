@@ -22,7 +22,7 @@ $(document).ready(function () {
 
       
     if (valid) {
-      windows.location.href = "";
+      
     } else {
       errorMessages.show();
     }
