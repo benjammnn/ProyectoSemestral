@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Usuario, Foto, UsuarioSettings, Match, Mensaje, Chat, Like
+from .models import Usuario, UsuarioSettings, Match, Mensaje, Chat, Like
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import UserForm
@@ -158,6 +158,7 @@ def perfilUser(request):
         password = request.POST.get("password")
         fecha_nacimiento = request.POST.get("fecha_nacimiento")
         genero = request.POST.get("genero")
+        foto = request.FILES.get("foto")
         activo = True
 
         print("Datos recibidos del formulario:")
@@ -183,6 +184,8 @@ def perfilUser(request):
             usuario.password = password  # Considera si quieres almacenar las contraseñas así
         usuario.fecha_nacimiento = fecha_nacimiento
         usuario.genero = genero
+        if foto:
+            usuario.foto = foto
         usuario.activo = activo
         usuario.save()
 

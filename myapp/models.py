@@ -17,6 +17,7 @@ class Usuario(models.Model):
     password = models.CharField(max_length=50 )
     fecha_nacimiento = models.DateField()
     genero = models.CharField(max_length=10, choices=GENERO_CHOICES)
+    foto = models.ImageField(upload_to='fotos', blank=True, null=True)
     activo = models.BooleanField(default=True)
     liked_users = models.ManyToManyField('self', through='Like', symmetrical=False, related_name='liked_by')
 
@@ -31,17 +32,18 @@ class Like(models.Model):
     class Meta:
         unique_together = ('liker', 'liked')
 
-class Foto (models.Model):
+"""class Foto (models.Model):
     
     usuarioFoto = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to='myapp/static/img')
 
     def __str__(self):
         return f'{self.usuarioFoto.nombre} {self.usuarioFoto.apellidos}'
+"""
 
 class UsuarioSettings(models.Model):
     userConfig = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    fotoConfig = models.ForeignKey(Foto, on_delete=models.CASCADE)
+    """fotoConfig = models.ForeignKey(Foto, on_delete=models.CASCADE)"""
     foto_perfil = models.ImageField(upload_to='myapp/static/img')
     descripcion = models.TextField()
     carrera = models.CharField(max_length=100)

@@ -38,6 +38,13 @@
       text-align: center;
       margin-bottom: 10px;
     }
+    
+    .profile-img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
   </style>
 </head>
 
@@ -102,6 +109,16 @@
       <div class="row">
           <div class="col-md-8 shadow-lg mx-auto text-center p-3">
             <h2 class="my-3">Perfil de Usuario</h2>
+
+              <div class="form-floating-plaintext mb-3 w-50 mx-auto">
+                <label for="foto" class="form-label">Foto:</label>
+                {% if usuario.foto %}
+                  <img src="{{ usuario.foto.url }}" alt="Foto de perfil" class="img-thumbnail profile-img">
+                {% else %}
+                  <p>No hay foto disponible.</p>
+                {% endif %}
+              </div>
+
               <div class="form-floating-plaintext mb-3 w-50 mx-auto">
                 <label for="nombres" class="form-label">Nombre:</label>
                 <p id="nombres">{{ usuario.nombre }}</p>
@@ -126,6 +143,10 @@
                 <label for="genero" class="form-label">Género:</label>
                 <p id="genero">{{ usuario.genero }}</p>
               </div>
+
+              
+
+
 
               {% if mensaje %}
               <div class="alert alert-success w-50 mx-auto">
