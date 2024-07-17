@@ -40,7 +40,7 @@ def loginview(request):
         else:
             context = {
                 "mensaje": "Usuario o contraseña incorrecta",
-                "design": "alert alert-danger w-50 mx-auto text-center",
+                "design": "alert alert-danger w-50 text-center",
             }
             return render(request, "myapp/login.html", context)
     else:

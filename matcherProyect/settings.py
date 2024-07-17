@@ -130,3 +130,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'myapp/static/img')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'matcher2'
 LOGIN_URL = 'login'
+
+# El tiempo de expiración de la sesión en segundos (por ejemplo, 2 horas)
+SESSION_COOKIE_AGE = 7200
+# El tiempo de vida del token CSRF en segundos (por ejemplo, 2 horas)
+CSRF_COOKIE_AGE = 7200

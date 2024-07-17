@@ -85,17 +85,14 @@
             <a href="">¿Olvidaste tu contraseña?</a>
        
           </form>
-          <div class="container-fluid" style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
-            <div class="row" style="width:auto;">
-          <div id="mensajesError" class="alert alert-danger" style="display: none;"></div>
+              {% if mensaje %} 
+              <div class="{{design}}" style="grid-row: auto;">
+                {{mensaje}}
+              </div>
+              {% endif %}
         </div>
       </div>
       </div>
-      {% if request.user.is_authenticated %}
-      <h1>CONECTADO</h1>
-      {% else %}
-      <h1>NO CONECTADO</h1>
-      {% endif %}
     </main>
   <footer>
    

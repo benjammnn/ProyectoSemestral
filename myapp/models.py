@@ -23,6 +23,10 @@ class Usuario(models.Model):
 
     def __str__(self):
         return f'{self.nombre} {self.apellidos}'
+    
+    def get_age(self):
+        today = timezone.now().date()
+        return today.year - self.fecha_nacimiento.year - ((today.month, today.day) < (self.fecha_nacimiento.month, self.fecha_nacimiento.day))
 
 class Like(models.Model):
     liker = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='liker')

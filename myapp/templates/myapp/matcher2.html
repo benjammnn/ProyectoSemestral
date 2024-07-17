@@ -167,7 +167,11 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ user.usuariosettings.foto_perfil.url }}" class="d-block w-100 card-img-top" alt="{{ user.nombre }}" style="object-fit: cover;">
+                            {% if user.foto %}
+                            <img src="{{ user.foto.url }}" class="d-block w-100 card-img-top" alt="{{ user.nombre }}" style="object-fit: cover;">
+                            {% else %}
+                            <img src="{% static 'img/userPhoto.png' %}" alt="">
+                            {% endif %}
                         </div>
                         <!-- Add more images if available -->
                     </div>
